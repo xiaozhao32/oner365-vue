@@ -280,7 +280,7 @@ export default {
     // 状态修改
     handleStatusChange(row) {
       let text = row.status === "1" ? "启用" : "停用";
-      this.$confirm('确认要"' + text + '""' + row.userName + '"用户吗?', "警告", {
+      this.$confirm('确认要"' + text + '" "' + row.id + '"服务吗?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
@@ -313,7 +313,7 @@ export default {
       this.$refs["form"].validate(valid => {
         if (valid) {
           saveRoute(this.form).then(response => {
-            if (response.code === '1') {
+            if (response.code === 1) {
               this.msgSuccess("保存成功");
               this.open = false;
               this.getList();

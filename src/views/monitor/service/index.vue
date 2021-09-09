@@ -32,7 +32,8 @@
       </el-table-column>
       <el-table-column label="类型" align="center" width="70">
       	<template slot-scope="scope">
-          <el-tag>{{ scope.row[0].scheme }}</el-tag>
+          <el-tag v-if="scope.row[0].scheme == null">默认</el-tag>
+          <el-tag v-else-if="scope.row[0].scheme != null">{{ scope.row[0].scheme }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
