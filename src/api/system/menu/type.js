@@ -37,13 +37,8 @@ export function delMenuType(data) {
 
 // 更新状态
 export function changeStatus(id, status) {
-	const data = {
-    id: id,
-    status: status
-  }
   return request({
-    url: '/system/menuType/editStatusById',
-    method: 'post',
-    data: data
+    url: '/system/menuType/editStatusById/' + id + '?status=' + status,
+    method: 'post'
   })
 }

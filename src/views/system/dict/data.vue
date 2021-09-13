@@ -293,7 +293,7 @@ export default {
     // 状态修改
     handleStatusChange(row) {
       let text = row.status === "1" ? "启用" : "停用";
-      this.$confirm('确认要 "' + text + '" "' + row.typeName + '" 吗?', "警告", {
+      this.$confirm('确认要 "' + text + '" "' + row.itemName + '" 吗?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"

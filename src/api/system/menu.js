@@ -70,14 +70,9 @@ export function delMenu(data) {
 
 // 更新状态
 export function changeStatus(id, status) {
-	const data = {
-    id,
-    status
-  }
   return request({
-    url: '/system/menu/editStatusById',
-    method: 'post',
-    data: data
+    url: '/system/menu/editStatusById/' + id + '?status=' + status,
+    method: 'post'
   })
 }
 

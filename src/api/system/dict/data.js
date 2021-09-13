@@ -45,14 +45,9 @@ export function delData(data) {
 
 // 状态修改
 export function changeStatus(id, status) {
-  const data = {
-    id,
-    status
-  }
   return request({
-    url: '/system/dict/editItemStatus',
-    method: 'post',
-    data: data
+    url: '/system/dict/editItemStatus/' + id + '?status=' + status,
+    method: 'post'
   })
 }
 

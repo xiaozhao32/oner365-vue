@@ -63,15 +63,10 @@ export function checkUserName(id, userName) {
 }
 
 // 用户状态修改
-export function changeUserStatus(userId, status) {
-  const data = {
-    userId,
-    status
-  }
+export function changeUserStatus(id, status) {
   return request({
-    url: '/system/user/editStatus',
-    method: 'post',
-    data: data
+    url: '/system/user/editStatus/' + id + '?status=' + status,
+    method: 'post'
   })
 }
 

@@ -37,14 +37,9 @@ export function dataScope(data) {
 
 // 角色状态修改
 export function changeRoleStatus(id, status) {
-  const data = {
-    id,
-    status
-  }
   return request({
-    url: '/system/role/editStatus',
-    method: 'post',
-    data: data
+    url: '/system/role/editStatus/' + id + '?status=' + status,
+    method: 'post'
   })
 }
 
