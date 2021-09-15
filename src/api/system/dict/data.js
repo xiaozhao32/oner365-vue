@@ -1,7 +1,18 @@
 import request from '@/utils/request'
 
 // 查询字典数据列表
-export function listData(data) {
+export function listData(queryParams) {
+  var data = {
+    pageIndex: queryParams.pageIndex,
+    pageSize: queryParams.pageSize,
+    order: { key: 'itemOrder', val: 'asc' },
+    whereList: [
+      { key: 'typeId', opt: 'eq', val: queryParams.typeId },
+      { key: 'itemCode', opt: 'like', val: queryParams.itemCode },
+      { key: 'itemName', opt: 'like', val: queryParams.itemName },
+      { key: 'status', opt: 'eq', val: queryParams.status }
+    ]
+  }
   return request({
     url: '/system/dict/findItemList',
     method: 'post',

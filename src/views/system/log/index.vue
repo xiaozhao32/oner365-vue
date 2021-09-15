@@ -312,13 +312,22 @@ export default {
     /** 导出按钮操作 */
     handleExport() {
       const queryParams = this.queryParams;
+      var data = {
+        pageIndex: queryParams.pageIndex,
+        pageSize: queryParams.pageSize,
+        whereList: [
+          { key: 'methodName', opt: 'eq', val: queryParams.methodName },
+          { key: 'operationName', opt: 'like', val: queryParams.operationName },
+          { key: 'operationIp', opt: 'like', val: queryParams.operationIp }
+        ]
+      }
       const url = '/system/log/export';
       this.$confirm('是否确认导出所有数据项?', "警告", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
       }).then(function() {
-        exportFile(url, queryParams);        	
+        exportFile(url, data);        	
       });
     }
   }

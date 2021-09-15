@@ -74,14 +74,9 @@ export function checkOrgCode(type, orgId, code) {
 
 // 状态修改
 export function changeStatus(id, status) {
-  const data = {
-    id,
-    status
-  }
   return request({
-    url: '/system/org/changeStatus',
-    method: 'post',
-    data: data
+    url: '/system/org/changeStatus/' + id + '?status=' + status,
+    method: 'post'
   })
 }
 

@@ -1,7 +1,16 @@
 import request from '@/utils/request'
 
 // 查询岗位列表
-export function listJob(data) {
+export function listJob(queryParams) {
+  var data = {
+    pageIndex: queryParams.pageIndex,
+    pageSize: queryParams.pageSize,
+    order: { key: 'jobOrder', val: 'asc' },
+    whereList: [
+      { key: 'jobName', opt: 'like', val: queryParams.jobName },
+      { key: 'status', opt: 'eq', val: queryParams.status }
+    ]
+  }
   return request({
     url: '/system/job/list',
     method: 'post',

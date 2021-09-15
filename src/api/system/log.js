@@ -1,7 +1,16 @@
 import request from '@/utils/request'
 
 // 查询日志列表
-export function listLog(data) {
+export function listLog(queryParams) {
+  var data = {
+    pageIndex: queryParams.pageIndex,
+    pageSize: queryParams.pageSize,
+    whereList: [
+      { key: 'methodName', opt: 'eq', val: queryParams.methodName },
+      { key: 'operationName', opt: 'like', val: queryParams.operationName },
+      { key: 'operationIp', opt: 'like', val: queryParams.operationIp }
+    ]
+  }
   return request({
     url: '/system/log/list',
     method: 'post',

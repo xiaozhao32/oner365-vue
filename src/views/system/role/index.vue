@@ -475,13 +475,28 @@ export default {
     /** 导出按钮操作 */
     handleExport() {
       const queryParams = this.queryParams;
+      var beginTime = '';
+      var endTime = '';
+      if (queryParams.beginTime != undefined && queryParams.endTime != undefined) {
+        beginTime = queryParams.beginTime;
+        endTime = queryParams.endTime;
+      }
+      var data = {
+        pageIndex: queryParams.pageIndex,
+        pageSize: queryParams.pageSize,
+        whereList: [
+          { key: 'roleName', opt: 'like', val: queryParams.roleName },
+          { key: 'status', opt: 'eq', val: queryParams.status },
+          { key: 'createTime', opt: 'be', val: beginTime + '|' + endTime }
+        ]
+      }
       const url = '/system/role/export';
       this.$confirm('是否确认导出所有数据项?', "警告", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
       }).then(function() {
-        exportFile(url, queryParams);   	
+        exportFile(url, data);   	
       });
     }
   }

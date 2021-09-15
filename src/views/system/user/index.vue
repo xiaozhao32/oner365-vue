@@ -631,13 +631,28 @@ export default {
     /** 导出按钮操作 */
     handleExport() {
       const queryParams = this.queryParams;
+      var beginTime = '';
+      var endTime = '';
+      if (queryParams.beginTime != undefined && queryParams.endTime != undefined) {
+        beginTime = queryParams.beginTime;
+        endTime = queryParams.endTime;
+      }
+      var data = {
+        pageIndex: queryParams.pageIndex,
+        pageSize: queryParams.pageSize,
+        whereList: [
+          { key: 'userName', opt: 'like', val: queryParams.userName },
+          { key: 'realName', opt: 'like', val: queryParams.realName },
+          { key: 'createTime', opt: 'be', val: beginTime + '|' + endTime }
+        ]
+      }
       const url = '/system/user/export';
       this.$confirm('是否确认导出所有数据项?', "警告", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
       }).then(function() {
-        exportFile(url, queryParams);        	
+        exportFile(url, data);        	
       });
     },
     /** 导入按钮操作 */

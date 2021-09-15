@@ -1,7 +1,22 @@
 import request from '@/utils/request'
 
 // 查询角色列表
-export function listRole(data) {
+export function listRole(queryParams) {
+  var beginTime = '';
+  var endTime = '';
+  if (queryParams.beginTime != undefined && queryParams.endTime != undefined) {
+    beginTime = queryParams.beginTime;
+    endTime = queryParams.endTime;
+  }
+  var data = {
+    pageIndex: queryParams.pageIndex,
+    pageSize: queryParams.pageSize,
+    whereList: [
+      { key: 'roleName', opt: 'like', val: queryParams.roleName },
+      { key: 'status', opt: 'eq', val: queryParams.status },
+      { key: 'createTime', opt: 'be', val: beginTime + '|' + endTime }
+    ]
+  }
   return request({
     url: '/system/role/list',
     method: 'post',

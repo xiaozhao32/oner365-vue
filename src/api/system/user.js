@@ -2,7 +2,22 @@ import request from '@/utils/request'
 import { praseStrEmpty } from '@/utils/ruoyi'
 
 // 查询用户列表
-export function listUser(data) {
+export function listUser(queryParams) {
+  var beginTime = '';
+  var endTime = '';
+  if (queryParams.beginTime != undefined && queryParams.endTime != undefined) {
+    beginTime = queryParams.beginTime;
+    endTime = queryParams.endTime;
+  }
+  var data = {
+    pageIndex: queryParams.pageIndex,
+    pageSize: queryParams.pageSize,
+    whereList: [
+      { key: 'userName', opt: 'like', val: queryParams.userName },
+      { key: 'realName', opt: 'like', val: queryParams.realName },
+      { key: 'createTime', opt: 'be', val: beginTime + '|' + endTime }
+    ]
+  }
   return request({
     url: '/system/user/list',
     method: 'post',

@@ -1,7 +1,16 @@
 import request from '@/utils/request'
 
 // 查询定时任务调度列表
-export function listTask(data) {
+export function listTask(params) {
+  var data = {
+    pageIndex: params.pageIndex,
+    pageSize: params.pageSize,
+    whereList: [
+      { key: 'taskName', opt: 'like', val: params.taskName },
+      { key: 'taskGroup', val: params.taskGroup },
+      { key: 'status', val: params.status }
+    ]
+  }
   return request({
     url: '/monitor/task/list',
     method: 'post',

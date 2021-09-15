@@ -309,13 +309,22 @@ export default {
     /** 导出按钮操作 */
     handleExport() {
       const queryParams = this.queryParams;
+      var data = {
+        pageIndex: queryParams.pageIndex,
+        pageSize: queryParams.pageSize,
+        order: { key: 'jobOrder', val: 'asc' },
+        whereList: [
+          { key: 'jobName', opt: 'like', val: queryParams.jobName },
+          { key: 'status', opt: 'eq', val: queryParams.status }
+        ]
+      }
       const url = '/system/job/export';
       this.$confirm('是否确认导出所有数据项?', "警告", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
       }).then(function() {
-        exportFile(url, queryParams);        	
+        exportFile(url, data);        	
       });
     }
   }

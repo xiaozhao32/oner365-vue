@@ -1,7 +1,14 @@
 import request from '@/utils/request'
 
 // 文件列表
-export function listFile(data) {
+export function listFile(params) {
+  var data = {
+    pageIndex: params.pageIndex,
+    pageSize: params.pageSize,
+    whereList: [
+      { key: 'displayName', opt: 'like', val: params.displayName }
+    ]
+  }
   return request({
     url: '/files/fdfs/list',
     method: 'post',

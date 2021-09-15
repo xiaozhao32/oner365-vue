@@ -1,7 +1,15 @@
 import request from '@/utils/request'
 
 // 查询路由列表
-export function listRoute(data) {
+export function listRoute(params) {
+  var data = {
+    pageIndex: params.pageIndex,
+    pageSize: params.pageSize,
+    whereList: [
+      { key: 'id', opt: 'like', val: params.id },
+      { key: 'status', val: params.status }
+    ]
+  }
   return request({
     url: '/route/list',
     method: 'post',

@@ -1,7 +1,16 @@
 import request from '@/utils/request'
 
 // 查询菜单列表
-export function listMenuType(data) {
+export function listMenuType(queryParams) {
+  var data = {
+    pageIndex: queryParams.pageIndex,
+    pageSize: queryParams.pageSize,
+    whereList: [
+      { key: 'typeCode', opt: 'like', val: queryParams.typeCode },
+      { key: 'typeName', opt: 'like', val: queryParams.typeName },
+      { key: 'status', opt: 'eq', val: queryParams.status }
+    ]
+  }
   return request({
     url: '/system/menuType/list',
     method: 'post',
