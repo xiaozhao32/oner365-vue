@@ -158,12 +158,28 @@
 </template>
 
 <script>
-import { listType, getType, delType, saveType, changeStatus } from "@/api/system/dict/type";
+import { listType, getType, delType, saveType, changeStatus, checkCode } from "@/api/system/dict/type";
 import { exportFile } from "@/utils/zipdownload";
 
 export default {
   name: "Dict",
   data() {
+
+    var validateCode = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('字典编号不能为空'));
+      } else {
+        const id = this.form.id;
+        checkTypeCode(id, value).then(response => {
+          if (response.code === 1) {
+            callback(new Error('字典编号已存在'));
+          } else {
+            callback();
+          }
+        });        
+     }
+    };
+
     return {
       // 遮罩层
       loading: true,
@@ -202,7 +218,7 @@ export default {
           { required: true, message: "字典名称不能为空", trigger: "blur" }
         ],
         typeCode: [
-          { required: true, message: "字典类型不能为空", trigger: "blur" }
+          { required: true, validator: validateCode, trigger: "blur" }
         ]
       }
     };

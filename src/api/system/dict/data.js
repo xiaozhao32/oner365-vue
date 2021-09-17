@@ -62,3 +62,17 @@ export function changeStatus(id, status) {
   })
 }
 
+// 判断是否存在
+export function checkCode(id, typeId, code) {
+  const data = {
+    id, 
+    typeId,
+    code
+  }
+  return request({
+    url: '/system/dict/checkCode',
+    method: 'post',
+    data: data
+  })
+}
+

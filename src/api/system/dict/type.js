@@ -61,10 +61,15 @@ export function clearCache(query) {
   })
 }
 
-// 获取字典选择框列表
-export function optionselect() {
+// 判断类别是否存在
+export function checkCode(id, code) {
+  const data = {
+    id, 
+    code
+  }
   return request({
-    url: '/system/dict/type/optionselect',
-    method: 'get'
+    url: '/system/dict/checkTypeCode',
+    method: 'post',
+    data: data
   })
 }

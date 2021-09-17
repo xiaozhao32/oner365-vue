@@ -153,13 +153,30 @@
 </template>
 
 <script>
-import { listData, getData, delData, saveData, changeStatus } from "@/api/system/dict/data";
+import { listData, getData, delData, saveData, changeStatus, checkCode } from "@/api/system/dict/data";
 import { listType, getType } from "@/api/system/dict/type";
 import { exportFile } from "@/utils/zipdownload";
 
 export default {
   name: "Data",
   data() {
+
+    var validateCode = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('字典编号不能为空'));
+      } else {
+        const id = this.form.id;
+        const typeId = this.form.typeId;
+        checkCode(id, typeId, value).then(response => {
+          if (response.code === 1) {
+            callback(new Error('字典编号已存在'));
+          } else {
+            callback();
+          }
+        });        
+     }
+    };
+
     return {
       // 遮罩层
       loading: true,
@@ -200,13 +217,13 @@ export default {
       // 表单校验
       rules: {
         itemName: [
-          { required: true, message: "数据标签不能为空", trigger: "blur" }
+          { required: true, message: "字典名称不能为空", trigger: "blur" }
         ],
         itemCode: [
-          { required: true, message: "数据键值不能为空", trigger: "blur" }
+          { required: true, validator: validateCode, trigger: "blur" }
         ],
         itemOrder: [
-          { required: true, message: "数据顺序不能为空", trigger: "blur" }
+          { required: true, message: "顺序不能为空", trigger: "blur" }
         ]
       }
     };
