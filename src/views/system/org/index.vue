@@ -186,7 +186,7 @@ export default {
       } else {
         const id = this.form.id;
         checkOrgCode("orgCode", id, value).then(response => {
-          if (response.code === 1) {
+          if (response === 1) {
             callback(new Error('机构编号已存在'));
           } else {
             callback();

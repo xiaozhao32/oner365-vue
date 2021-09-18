@@ -170,8 +170,8 @@ export default {
         callback(new Error('字典编号不能为空'));
       } else {
         const id = this.form.id;
-        checkTypeCode(id, value).then(response => {
-          if (response.code === 1) {
+        checkCode(id, value).then(response => {
+          if (response === 1) {
             callback(new Error('字典编号已存在'));
           } else {
             callback();

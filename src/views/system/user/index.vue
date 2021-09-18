@@ -334,7 +334,7 @@ export default {
       } else {
         const id = this.form.id;
         checkUserName(id, value).then(response => {
-          if (response.code === 1) {
+          if (response === 1) {
             callback(new Error('用户名称已存在'));
           } else {
             callback();
@@ -579,8 +579,10 @@ export default {
         cancelButtonText: "取消"
       }).then(({ value }) => {
           resetUserPwd(row.id, value).then(response => {
-            if (response.code === 1) {
+            if (response === 1) {
               this.msgSuccess("修改成功，新密码是：" + value);
+            } else {
+              this.msgError("修改失败!")
             }
           });
         }).catch(() => {});

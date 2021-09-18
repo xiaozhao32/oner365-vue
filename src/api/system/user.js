@@ -52,10 +52,10 @@ export function delUser(data) {
 }
 
 // 用户密码重置
-export function resetUserPwd(userId, p) {
+export function resetUserPwd(userId, password) {
   const data = {
     userId,
-    p
+    password
   }
   return request({
     url: '/system/user/resetPassword',
@@ -103,10 +103,10 @@ export function updateUserProfile(data) {
 }
 
 // 用户密码更新
-export function updateUserPwd(oldPassword, p) {
+export function updateUserPwd(oldPassword, password) {
   const data = {
     oldPassword,
-    p
+    password
   }
   return request({
     url: '/system/user/editPassword',
