@@ -51,3 +51,16 @@ export function changeStatus(id, status) {
     method: 'post'
   })
 }
+
+// 判断是否存在
+export function checkCode(id, code) {
+  const data = {
+    id, 
+    code
+  }
+  return request({
+    url: '/system/menuType/checkCode',
+    method: 'post',
+    data: data
+  })
+}

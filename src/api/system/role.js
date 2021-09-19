@@ -59,7 +59,11 @@ export function changeRoleStatus(id, status) {
 }
 
 // 判断角色是否存在
-export function checkRoleName(data) {
+export function checkRoleName(id, roleName) {
+  const data = {
+    id, 
+    roleName
+  }
   return request({
     url: '/system/role/checkRoleName',
     method: 'post',

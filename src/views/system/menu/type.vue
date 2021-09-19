@@ -139,11 +139,27 @@
 </template>
 
 <script>
-import { listMenuType, getMenuType, delMenuType, saveMenuType, changeStatus } from "@/api/system/menu/type";
+import { listMenuType, getMenuType, delMenuType, saveMenuType, changeStatus, checkCode } from "@/api/system/menu/type";
 
 export default {
   name: "MenuType",
   data() {
+
+    var validateCode = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('标识不能为空'));
+      } else {
+        const id = this.form.typeCode;
+        checkCode(id, value).then(response => {
+          if (response === 1) {
+            callback(new Error('标识已存在'));
+          } else {
+            callback();
+          }
+        });        
+     }
+    };
+
     return {
       // 遮罩层
       loading: true,
@@ -186,7 +202,7 @@ export default {
       // 表单校验
       rules: {
         typeCode: [
-          { required: true, message: "类型标识不能为空", trigger: "blur" }
+          { required: true, validator: validateCode, trigger: "blur" }
         ],
         typeName: [
           { required: true, message: "类型名称不能为空", trigger: "blur" }

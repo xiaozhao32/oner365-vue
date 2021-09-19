@@ -186,7 +186,7 @@
 </template>
 
 <script>
-import { listRole, getRole, delRole, saveRole, dataScope, changeRoleStatus } from "@/api/system/role";
+import { listRole, getRole, delRole, saveRole, dataScope, changeRoleStatus, checkRoleName } from "@/api/system/role";
 import { treeselect as menuTreeselect, roleMenuTreeselect, listMenuType } from "@/api/system/menu";
 import { treeselect as orgTreeselect, roleOrgTreeselect } from "@/api/system/org";
 import { exportFile } from "@/utils/zipdownload";
@@ -194,6 +194,22 @@ import { exportFile } from "@/utils/zipdownload";
 export default {
   name: "Role",
   data() {
+
+    var validateCode = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('角色名称不能为空'));
+      } else {
+        const id = this.form.id;
+        checkRoleName(id, value).then(response => {
+          if (response === 1) {
+            callback(new Error('角色名称已存在'));
+          } else {
+            callback();
+          }
+        });        
+     }
+    };
+
     return {
       // 遮罩层
       loading: true,
@@ -267,7 +283,7 @@ export default {
       // 表单校验
       rules: {
         roleName: [
-          { required: true, message: "角色名称不能为空", trigger: "blur" }
+          { required: true, validator: validateCode, trigger: "blur" }
         ],
         roleCode: [
           { required: true, message: "角色编号不能为空", trigger: "blur" }
