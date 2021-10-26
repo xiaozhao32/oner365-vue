@@ -74,7 +74,7 @@
         </el-table-column>
         <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
           <template slot-scope="scope">
-            <el-button size="mini" type="text" icon="el-icon-search" @click="handleOper(entity.clusterName)">&nbsp;操作</el-button>
+            <el-button size="mini" type="text" icon="el-icon-search" @click="handleOper(scope.row.index)">&nbsp;操作</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -111,8 +111,10 @@ export default {
       });
     },
     /** 操作查询 */
-    handleOper() {
-      this.$router.push("/monitor/elasticsearch/data");
+    handleOper(name) {
+      // 根据 es的 name 以后方便扩展
+      const data = "data";
+      this.$router.push("/monitor/elasticsearch/" + data);
     }
   }
 };
