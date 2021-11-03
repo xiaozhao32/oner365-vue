@@ -8,3 +8,20 @@ export function getIndex() {
   })
 }
 
+// List
+export function rabbitmqList(type, params) {
+  return request({
+    url: '/monitor/rabbitmq/'+type+'/list',
+    method: 'get',
+    params: params
+  })
+}
+
+// Delete
+export function rabbitmqDelete(type, id) {
+  return request({
+    url: '/monitor/rabbitmq/delete/'+type+'/'+id,
+    method: 'delete'
+  })
+}
+

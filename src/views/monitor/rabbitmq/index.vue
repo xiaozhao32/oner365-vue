@@ -43,7 +43,7 @@
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel">
+      <div class="card-panel" @click="handleRabbit('connectionList')">
         <div class="card-panel-icon-wrapper icon-monitor">
           <svg-icon icon-class="monitor" class-name="card-panel-icon" />
         </div>
@@ -56,7 +56,7 @@
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel">
+      <div class="card-panel" @click="handleRabbit('channelList')">
         <div class="card-panel-icon-wrapper icon-star">
           <svg-icon icon-class="star" class-name="card-panel-icon" />
         </div>
@@ -69,7 +69,7 @@
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel">
+      <div class="card-panel" @click="handleRabbit('exchangeList')">
         <div class="card-panel-icon-wrapper icon-server">
           <svg-icon icon-class="server" class-name="card-panel-icon" />
         </div>
@@ -82,7 +82,7 @@
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel">
+      <div class="card-panel" @click="handleRabbit('queueList')">
         <div class="card-panel-icon-wrapper icon-log">
           <svg-icon icon-class="log" class-name="card-panel-icon" />
         </div>
@@ -158,6 +158,10 @@ export default {
         }
         this.loading = false;
       });
+    },
+    /** Queue */
+    handleRabbit(data) {
+      this.$router.push("/monitor/rabbitmq/"+data);
     }
   }
 };

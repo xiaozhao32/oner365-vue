@@ -157,6 +157,58 @@ export const constantRoutes = [
         meta: { title: 'Elasticsearch查询' }
       }
     ]
+  },
+  {
+    path: '/monitor/rabbitmq/connectionList',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '',
+        component: (resolve) => require(['@/views/monitor/rabbitmq/connectionList'], resolve),
+        name: 'Connection',
+        meta: { title: 'Connection List' }
+      }
+    ]
+  },
+  {
+    path: '/monitor/rabbitmq/channelList',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '',
+        component: (resolve) => require(['@/views/monitor/rabbitmq/channelList'], resolve),
+        name: 'Channel',
+        meta: { title: 'Channel List' }
+      }
+    ]
+  },
+  {
+    path: '/monitor/rabbitmq/exchangeList',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '',
+        component: (resolve) => require(['@/views/monitor/rabbitmq/exchangeList'], resolve),
+        name: 'Exchange',
+        meta: { title: 'Exchange List' }
+      }
+    ]
+  },
+  {
+    path: '/monitor/rabbitmq/queueList',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '',
+        component: (resolve) => require(['@/views/monitor/rabbitmq/queueList'], resolve),
+        name: 'Queue',
+        meta: { title: 'Queue List' }
+      }
+    ]
   }
 ]
 
