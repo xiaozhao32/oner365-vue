@@ -11,7 +11,7 @@ export function getIndex() {
 // List
 export function rabbitmqList(type, params) {
   return request({
-    url: '/monitor/rabbitmq/'+type+'/list',
+    url: '/monitor/rabbitmq/list/' + type,
     method: 'get',
     params: params
   })
@@ -20,7 +20,7 @@ export function rabbitmqList(type, params) {
 // Delete
 export function rabbitmqDelete(type, id) {
   return request({
-    url: '/monitor/rabbitmq/delete/'+type+'/'+id,
+    url: '/monitor/rabbitmq/delete/'+ type + '/' + id,
     method: 'delete'
   })
 }
