@@ -90,7 +90,7 @@ export default {
   methods: {
     getList() {
       this.loading = true;
-      rabbitmqList('queues', this.queryParams).then(response => {
+      rabbitmqList('QUEUES', this.queryParams).then(response => {
     	  this.dataList = response.items;
         this.total = response.total_count;
         this.loading = false;
