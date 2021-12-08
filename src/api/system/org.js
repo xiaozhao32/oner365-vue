@@ -59,10 +59,10 @@ export function delOrg(data) {
   })
 }
 
-export function checkOrgCode(type, orgId, code) {
+export function checkOrgCode(type, id, code) {
   const data = {
     type: type,
-    orgId: orgId,
+    id: id,
     code: code
   }
   return request({
