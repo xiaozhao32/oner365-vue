@@ -16,7 +16,7 @@ export function changeStatus(id, status) {
 // 刷新配置
 export function refreshConfig() {
   return request({
-    url: '/monitor/service/refreshConfig',
+    url: '/route/refresh',
     method: 'get'
   })
 }
