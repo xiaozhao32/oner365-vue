@@ -79,6 +79,8 @@ const user = {
           commit('SET_TOKEN', '')
           commit('SET_ROLES', [])
           commit('SET_PERMISSIONS', [])
+          commit('SET_NAME', '')
+          commit('SET_AVATAR', '')
           commit('SET_ID', '')
           removeToken()
           resolve()
@@ -91,7 +93,11 @@ const user = {
     // 前端 登出
     FedLogOut({ commit }) {
       return new Promise(resolve => {
-        commit('SET_TOKEN', '')
+        commit('SET_ROLES', [])
+        commit('SET_PERMISSIONS', [])
+        commit('SET_NAME', '')
+        commit('SET_AVATAR', '')
+        commit('SET_ID', '')
         removeToken()
         resolve()
       })
