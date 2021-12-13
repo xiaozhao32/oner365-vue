@@ -5,6 +5,10 @@ export function listFile(params) {
   var data = {
     pageIndex: params.pageIndex,
     pageSize: params.pageSize,
+    order: {
+      key: 'createTime',
+      val: 'desc' 
+    },
     whereList: [
       { key: 'displayName', opt: 'like', val: params.displayName }
     ]

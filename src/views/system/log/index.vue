@@ -178,7 +178,7 @@ export default {
         pageSize: 10,
         order: {
           key: "createTime",
-          val: "DESC"
+          val: "desc"
         },
         operationIp: undefined,
         operationName: undefined,
@@ -315,6 +315,10 @@ export default {
       var data = {
         pageIndex: queryParams.pageIndex,
         pageSize: queryParams.pageSize,
+        order: {
+	      key: "createTime",
+	      val: "desc"
+	    },
         whereList: [
           { key: 'methodName', opt: 'eq', val: queryParams.methodName },
           { key: 'operationName', opt: 'like', val: queryParams.operationName },

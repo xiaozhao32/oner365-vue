@@ -5,6 +5,10 @@ export function listLog(queryParams) {
   var data = {
     pageIndex: queryParams.pageIndex,
     pageSize: queryParams.pageSize,
+    order: {
+      key: "createTime",
+      val: "desc"
+    },
     whereList: [
       { key: 'methodName', opt: 'eq', val: queryParams.methodName },
       { key: 'operationName', opt: 'like', val: queryParams.operationName },

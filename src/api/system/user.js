@@ -12,6 +12,10 @@ export function listUser(queryParams) {
   var data = {
     pageIndex: queryParams.pageIndex,
     pageSize: queryParams.pageSize,
+    order: {
+      key: 'lastTime',
+      val: 'desc' 
+    },
     whereList: [
       { key: 'userName', opt: 'like', val: queryParams.userName },
       { key: 'realName', opt: 'like', val: queryParams.realName },

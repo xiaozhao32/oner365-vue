@@ -5,6 +5,10 @@ export function listTaskLog(params) {
   var data = {
     pageIndex: params.pageIndex,
     pageSize: params.pageSize,
+    order: {
+      key: 'createTime',
+      val: 'desc' 
+    },
     whereList: [
       { key: 'taskName', opt: 'like', val: params.taskName },
       { key: 'taskGroup', val: params.taskGroup },

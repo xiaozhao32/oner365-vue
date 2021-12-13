@@ -11,6 +11,10 @@ export function listRole(queryParams) {
   var data = {
     pageIndex: queryParams.pageIndex,
     pageSize: queryParams.pageSize,
+    order: {
+      key: 'createTime',
+      val: 'desc' 
+    },
     whereList: [
       { key: 'roleName', opt: 'like', val: queryParams.roleName },
       { key: 'status', opt: 'eq', val: queryParams.status },
