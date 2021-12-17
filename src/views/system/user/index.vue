@@ -564,7 +564,7 @@ export default {
       this.reset();
       const id = row.id || this.ids;
       getUser(id).then(response => {
-        this.form = response.msg;
+        this.form = response.sysUser;
         this.jobOptions = response.jobList;
         this.roleOptions = response.roleList;
         this.getOrgTreeList(this.form.id);
