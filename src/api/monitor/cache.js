@@ -11,7 +11,7 @@ export function getCache() {
 // 获取缓存列表
 export function getCacheList() {
   return request({
-    url: '/monitor/cache/cacheList',
+    url: '/monitor/cache/list',
     method: 'get'
   })
 }

@@ -144,7 +144,7 @@ export default {
         // 设置上传的请求头部
         headers: { Authorization: getToken() },
         // 上传的地址
-        url: process.env.VUE_APP_BASE_API + "/files/fdfs/uploadMultipartFile"
+        url: process.env.VUE_APP_BASE_API + "/files/storage/upload"
       },
     };
   },
@@ -221,7 +221,7 @@ export default {
     },
     /** 下载按钮操作 */
     handleDownload(row) {
-      let url = "/files/fdfs/download?fileUrl="+row.id+"&filename="+row.displayName;
+      let url = "/files/storage/download?fileUrl="+row.id+"&filename="+row.displayName;
       downLoadZip(url);
     },
     /** 预览 */
@@ -236,7 +236,7 @@ export default {
         this.openImage = true;
       }
       if (row.fileSuffix === 'pdf') {
-        let url = "/files/fdfs/downloadFile?fileUrl="+row.id;
+        let url = "/files/storage/byte/download?fileUrl="+row.id;
         previewPdf(url);
       }
     }

@@ -48,7 +48,7 @@ export function saveRole(data) {
 // 角色数据权限
 export function dataScope(data) {
   return request({
-    url: '/system/role/dataScope',
+    url: '/system/role/scope',
     method: 'put',
     data: data
   })
@@ -57,7 +57,7 @@ export function dataScope(data) {
 // 角色状态修改
 export function changeRoleStatus(id, status) {
   return request({
-    url: '/system/role/editStatus/' + id + '?status=' + status,
+    url: '/system/role/status/' + id + '?status=' + status,
     method: 'post'
   })
 }
@@ -69,7 +69,7 @@ export function checkRoleName(id, roleName) {
     roleName
   }
   return request({
-    url: '/system/role/checkRoleName',
+    url: '/system/role/check',
     method: 'post',
     data: data
   })

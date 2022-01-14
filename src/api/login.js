@@ -34,7 +34,7 @@ export function getInfo() {
 // 获取验证码
 export function getCodeImg() {
   return request({
-    url: '/system/auth/captchaImage',
+    url: '/system/auth/captcha',
     method: 'get'
   })
 }

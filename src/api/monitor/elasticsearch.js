@@ -20,7 +20,7 @@ export function sampleGeneList(params) {
 	]
   }
   return request({
-	url: '/elasticsearch/sampleGene/list',
+	url: '/elasticsearch/sample/gene/list',
 	method: 'post',
 	data: data
   })
@@ -29,7 +29,7 @@ export function sampleGeneList(params) {
 // 保存
 export function saveSampleGene(data) {
 	return request({
-    url: '/elasticsearch/sampleGene/save',
+    url: '/elasticsearch/sample/gene/save',
     method: 'put',
     data: data
   })
@@ -38,7 +38,7 @@ export function saveSampleGene(data) {
 // 查询
 export function getSampleGene(id) {
 	return request({
-    url: '/elasticsearch/sampleGene/get/' + id,
+    url: '/elasticsearch/sample/gene/get/' + id,
     method: 'get'
   })
 }
@@ -46,7 +46,7 @@ export function getSampleGene(id) {
 // 删除
 export function deleteSampleGene(data) {
 	return request({
-    url: '/elasticsearch/sampleGene/delete',
+    url: '/elasticsearch/sample/gene/delete',
     method: 'delete',
     data: data
   })

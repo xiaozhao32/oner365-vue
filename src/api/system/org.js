@@ -23,7 +23,7 @@ export function treeselect() {
     'status': '1'
   }
   return request({
-    url: '/system/org/treeselect',
+    url: '/system/org/tree',
     method: 'post',
     data: data
   })
@@ -35,7 +35,7 @@ export function userOrgTreeselect(userId) {
     'status': '1'
   }
   return request({
-    url: '/system/org/userTreeselect/' + userId,
+    url: '/system/org/user/' + userId,
     method: 'post',
     data: data
   })
@@ -66,7 +66,7 @@ export function checkOrgCode(type, id, code) {
     code: code
   }
   return request({
-    url: '/system/org/checkCode',
+    url: '/system/org/check',
     method: 'post',
     data: data
   })
@@ -75,7 +75,7 @@ export function checkOrgCode(type, id, code) {
 // 状态修改
 export function changeStatus(id, status) {
   return request({
-    url: '/system/org/changeStatus/' + id + '?status=' + status,
+    url: '/system/org/status/' + id + '?status=' + status,
     method: 'post'
   })
 }

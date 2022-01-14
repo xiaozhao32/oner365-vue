@@ -377,7 +377,7 @@ export default {
           { key: 'status', opt: 'eq', val: queryParams.status }
         ]
       }
-      const url = '/system/dict/exportItem';
+      const url = '/system/dict/item/export';
       this.$confirm('是否确认导出所有数据项?', "警告", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",

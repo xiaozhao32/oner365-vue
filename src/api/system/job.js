@@ -47,7 +47,7 @@ export function delJob(data) {
 // 状态修改
 export function changeStatus(id, status) {
   return request({
-    url: '/system/job/editStatus/' + id + '?status=' + status,
+    url: '/system/job/status/' + id + '?status=' + status,
     method: 'post'
   })
 }

@@ -14,7 +14,7 @@ export function listData(queryParams) {
     ]
   }
   return request({
-    url: '/system/dict/findItemList',
+    url: '/system/dict/item/list',
     method: 'post',
     data: data
   })
@@ -23,7 +23,7 @@ export function listData(queryParams) {
 // 查询字典数据详细
 export function getData(id) {
   return request({
-    url: '/system/dict/getItemById/' + id,
+    url: '/system/dict/item/get/' + id,
     method: 'get'
   })
 }
@@ -31,7 +31,7 @@ export function getData(id) {
 // 根据字典类型查询字典数据信息
 export function getDicts(dictType) {
   return request({
-    url: '/system/dict/findTypeInfoById/' + dictType,
+    url: '/system/dict/item/type/' + dictType,
     method: 'get'
   })
 }
@@ -39,7 +39,7 @@ export function getDicts(dictType) {
 // 保存字典数据
 export function saveData(data) {
   return request({
-    url: '/system/dict/saveDictItem',
+    url: '/system/dict/item/save',
     method: 'put',
     data: data
   })
@@ -48,7 +48,7 @@ export function saveData(data) {
 // 删除字典数据
 export function delData(data) {
   return request({
-    url: '/system/dict/deleteItem',
+    url: '/system/dict/item/delete',
     method: 'delete',
     data: data
   })
@@ -57,7 +57,7 @@ export function delData(data) {
 // 状态修改
 export function changeStatus(id, status) {
   return request({
-    url: '/system/dict/editItemStatus/' + id + '?status=' + status,
+    url: '/system/dict/item/status/' + id + '?status=' + status,
     method: 'post'
   })
 }
@@ -70,7 +70,7 @@ export function checkCode(id, typeId, code) {
     code
   }
   return request({
-    url: '/system/dict/checkCode',
+    url: '/system/dict/item/check',
     method: 'post',
     data: data
   })

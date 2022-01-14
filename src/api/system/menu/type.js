@@ -12,7 +12,7 @@ export function listMenuType(queryParams) {
     ]
   }
   return request({
-    url: '/system/menuType/list',
+    url: '/system/menu/type/list',
     method: 'post',
     data: data
   })
@@ -21,7 +21,7 @@ export function listMenuType(queryParams) {
 // 查询菜单详细
 export function getMenuType(id) {
   return request({
-    url: '/system/menuType/get/' + id,
+    url: '/system/menu/type/get/' + id,
     method: 'get'
   })
 }
@@ -29,7 +29,7 @@ export function getMenuType(id) {
 // 保存菜单
 export function saveMenuType(data) {
   return request({
-    url: '/system/menuType/save',
+    url: '/system/menu/type/save',
     method: 'put',
     data: data
   })
@@ -38,7 +38,7 @@ export function saveMenuType(data) {
 // 删除菜单
 export function delMenuType(data) {
   return request({
-    url: '/system/menuType/delete',
+    url: '/system/menu/type/delete',
     method: 'delete',
     data: data
   })
@@ -47,7 +47,7 @@ export function delMenuType(data) {
 // 更新状态
 export function changeStatus(id, status) {
   return request({
-    url: '/system/menuType/editStatusById/' + id + '?status=' + status,
+    url: '/system/menu/type/status/' + id + '?status=' + status,
     method: 'post'
   })
 }
@@ -59,7 +59,7 @@ export function checkCode(id, code) {
     code
   }
   return request({
-    url: '/system/menuType/checkCode',
+    url: '/system/menu/type/check',
     method: 'post',
     data: data
   })

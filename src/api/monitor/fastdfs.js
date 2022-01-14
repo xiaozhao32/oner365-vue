@@ -14,7 +14,7 @@ export function listFile(params) {
     ]
   }
   return request({
-    url: '/files/fdfs/list',
+    url: '/files/storage/list',
     method: 'post',
     data: data
   }) 
@@ -23,7 +23,7 @@ export function listFile(params) {
 // 文件目录
 export function getDirectory(query) {
   return request({
-    url: '/files/fdfs/directory',
+    url: '/files/storage/directory',
     method: 'get',
     params: query
   })
@@ -32,7 +32,7 @@ export function getDirectory(query) {
 // 删除文件
 export function deleteFile(data) {
   return request({
-    url: '/files/fdfs/delete',
+    url: '/files/storage/delete',
     method: 'delete',
     data: data
   })

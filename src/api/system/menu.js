@@ -3,7 +3,7 @@ import request from '@/utils/request'
 // 查询菜单类型
 export function listMenuType() {
 	return request({
-		url: '/system/menuType/findAll',
+		url: '/system/menu/type/all',
 		method: 'get'
 	})
 }
@@ -11,7 +11,7 @@ export function listMenuType() {
 // 查询菜单列表
 export function listMenu(data) {
   return request({
-    url: '/system/menu/list',
+    url: '/system/menus/list',
     method: 'post',
     data: data
   })
@@ -20,7 +20,7 @@ export function listMenu(data) {
 // 查询菜单详细
 export function getMenu(menuId) {
   return request({
-    url: '/system/menu/get/' + menuId,
+    url: '/system/menus/get/' + menuId,
     method: 'get'
   })
 }
@@ -31,7 +31,7 @@ export function treeselect() {
     'status': '1'
   }
   return request({
-    url: '/system/menu/treeselect',
+    url: '/system/menus/tree',
     method: 'post',
     data: data
   })
@@ -44,7 +44,7 @@ export function roleMenuTreeselect(roleId, menuTypeId) {
     'menuTypeId': menuTypeId
   }
   return request({
-    url: '/system/menu/roleMenuTreeselect/' + roleId,
+    url: '/system/menus/role/' + roleId,
     method: 'post',
     data: data
   })
@@ -71,7 +71,7 @@ export function delMenu(data) {
 // 更新状态
 export function changeStatus(id, status) {
   return request({
-    url: '/system/menu/editStatusById/' + id + '?status=' + status,
+    url: '/system/menu/status/' + id + '?status=' + status,
     method: 'post'
   })
 }

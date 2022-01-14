@@ -62,7 +62,7 @@ export function resetUserPwd(userId, password) {
     password
   }
   return request({
-    url: '/system/user/resetPassword',
+    url: '/system/user/reset',
     method: 'post',
     data: data
   })
@@ -75,7 +75,7 @@ export function checkUserName(id, userName) {
 		userName
 	}
 	return request({
-		url: '/system/user/checkUserName',
+		url: '/system/user/check',
 		method: 'post',
 		data: data
 	})
@@ -84,7 +84,7 @@ export function checkUserName(id, userName) {
 // 用户状态修改
 export function changeUserStatus(id, status) {
   return request({
-    url: '/system/user/editStatus/' + id + '?status=' + status,
+    url: '/system/user/status/' + id + '?status=' + status,
     method: 'post'
   })
 }
@@ -100,7 +100,7 @@ export function getUserProfile() {
 // 修改用户个人信息
 export function updateUserProfile(data) {
   return request({
-    url: '/system/user/updateUserProfile',
+    url: '/system/user/update/profile',
     method: 'post',
     data: data
   })
@@ -113,7 +113,7 @@ export function updateUserPwd(oldPassword, password) {
     password
   }
   return request({
-    url: '/system/user/editPassword',
+    url: '/system/user/update/password',
     method: 'post',
     data: data
   })
@@ -131,7 +131,7 @@ export function uploadAvatar(data) {
 // 下载用户导入模板
 export function importTemplate() {
   return request({
-    url: '/system/user/importTemplate',
+    url: '/system/user/import',
     method: 'get'
   })
 }

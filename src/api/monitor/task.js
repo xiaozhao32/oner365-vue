@@ -72,7 +72,7 @@ export function changeTaskStatus(id, status) {
     status
   }
   return request({
-    url: '/monitor/task/changeStatus',
+    url: '/monitor/task/status',
     method: 'put',
     data: data
   })

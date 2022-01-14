@@ -12,7 +12,7 @@ export function listType(queryParams) {
     ]
   }
   return request({
-    url: '/system/dict/findTypeList',
+    url: '/system/dict/type/list',
     method: 'post',
     data: data
   })
@@ -21,7 +21,7 @@ export function listType(queryParams) {
 // 查询字典类型详细
 export function getType(typeId) {
   return request({
-    url: '/system/dict/getTypeById/' + typeId,
+    url: '/system/dict/type/get/' + typeId,
     method: 'get'
   })
 }
@@ -29,7 +29,7 @@ export function getType(typeId) {
 // 保存字典类型
 export function saveType(data) {
   return request({
-    url: '/system/dict/saveDictItemType',
+    url: '/system/dict/type/save',
     method: 'put',
     data: data
   })
@@ -38,7 +38,7 @@ export function saveType(data) {
 // 删除字典类型
 export function delType(data) {
   return request({
-    url: '/system/dict/deleteItemType',
+    url: '/system/dict/type/delete',
     method: 'delete',
     data: data
   })
@@ -47,7 +47,7 @@ export function delType(data) {
 // 状态修改
 export function changeStatus(id, status) {
   return request({
-    url: '/system/dict/editTypeStatus/' + id + '?status=' + status,
+    url: '/system/dict/type/status/' + id + '?status=' + status,
     method: 'post'
   })
 }
@@ -68,7 +68,7 @@ export function checkCode(id, code) {
     code
   }
   return request({
-    url: '/system/dict/checkTypeCode',
+    url: '/system/dict/type/check',
     method: 'post',
     data: data
   })

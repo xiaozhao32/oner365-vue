@@ -46,7 +46,7 @@ export function delRoute(data) {
 // 状态修改
 export function changeStatus(id, status) {
   return request({
-    url: '/route/updateRouteStatus/'+id+'/'+status,
+    url: '/route/status/'+id+'/'+status,
     method: 'get'
   })
 }

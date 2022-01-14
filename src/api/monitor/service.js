@@ -27,7 +27,7 @@ export function getActuatorEnv(uri) {
     uri
   }
   return request({
-    url: '/monitor/service/getActuatorEnv',
+    url: '/monitor/service/info',
     method: 'post',
     data: data
   })
@@ -41,7 +41,7 @@ export function resetService(ip, port, serviceName) {
     serviceName: serviceName
   }
   return request({
-    url: '/monitor/service/resetService',
+    url: '/monitor/service/reset',
     method: 'post',
     data: data
   })
@@ -50,7 +50,7 @@ export function resetService(ip, port, serviceName) {
 // 上传服务
 export function uploadService(data, ip, port, serviceName) {
   return request({
-    url: '/monitor/service/uploadService?ip='+ip+'&port='+port+'&serviceName='+serviceName,
+    url: '/monitor/service/upload?ip='+ip+'&port='+port+'&serviceName='+serviceName,
     method: 'post',
     data: data
   })
