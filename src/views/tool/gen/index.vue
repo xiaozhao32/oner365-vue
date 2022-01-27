@@ -233,7 +233,7 @@ export default {
         this.msgError("请选择要生成的数据");
         return;
       }
-      downLoadZip("/generator/gen/batchGenCode?tables=" + tableNames, "Generator");
+      downLoadZip("/generator/gen/batch?tables=" + tableNames, "Generator");
     },
     /** 打开导入表弹窗 */
     openImportTable() {
