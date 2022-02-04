@@ -42,7 +42,7 @@ service.interceptors.response.use(res => {
       }
     ).then(() => {
       store.dispatch('LogOut').then(() => {
-        location.href = '/index';
+        location.href = '/logout';
       })
     })
   } else if (code === 500) {
@@ -63,6 +63,13 @@ service.interceptors.response.use(res => {
 error => {
   console.log(error.response)
   var data = '微服务故障, 请稍后再试'
+  // 登录过期
+  if (error.response.status === 401) {
+    store.dispatch('LogOut').then(() => {
+      location.href = '/logout';
+    })
+  }
+  // 服务器异常
   if (error.response.status !== 500) {
     data = error.response.data.message
   }
