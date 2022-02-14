@@ -196,7 +196,7 @@ export default {
         open: false,
         title: "代码预览",
         data: {},
-        activeName: "domain.java"
+        activeName: "entity.java"
       }
     };
   },
@@ -215,8 +215,8 @@ export default {
     getList() {
       this.loading = true;
       listTable(this.queryParams).then(response => {
-          this.tableList = response.list;
-          this.total = response.count;
+          this.tableList = response.content;
+          this.total = response.totalElements;
           this.loading = false;
         }
       );

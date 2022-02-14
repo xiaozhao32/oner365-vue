@@ -152,8 +152,8 @@ export default {
     if (tableId) {
       // 获取表详细信息
       getGenTable(tableId).then(res => {
-        this.cloumns = res.list;
-        this.info = res.msg;
+        this.cloumns = res.columnList;
+        this.info = res.table;
       });
       /** 查询字典下拉列表 */
       const data = {};
@@ -177,8 +177,8 @@ export default {
             treeName: genTable.treeName,
             treeParentCode: genTable.treeParentCode
           };
-          updateGenTable(genTable).then(res => {
-            if (res.code === 1) {
+          updateGenTable(genTable).then(response => {
+            if (response === 1) {
               this.msgSuccess("更新成功！");
               this.close();
             } else {
@@ -200,7 +200,7 @@ export default {
     /** 关闭按钮 */
     close() {
       this.$store.dispatch("tagsView/delView", this.$route);
-      this.$router.push({ path: "/gen", query: { t: Date.now()}})
+      this.$router.push({ path: "/generator/gen", query: { t: Date.now()}})
     }
   },
   mounted() {
