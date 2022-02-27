@@ -226,7 +226,7 @@ export default {
       this.form = {
         id: '',
     	  initServerNo: '',
-    	  geneInfo: ''
+    	  geneInfo: {}
       };
       this.resetForm("form");
     },
