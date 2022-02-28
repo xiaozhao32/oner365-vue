@@ -53,7 +53,7 @@ export function roleMenuTreeselect(roleId, menuTypeId) {
 // 保存菜单
 export function saveMenu(data) {
   return request({
-    url: '/system/menu/save',
+    url: '/system/menus/save',
     method: 'put',
     data: data
   })
@@ -62,7 +62,7 @@ export function saveMenu(data) {
 // 删除菜单
 export function delMenu(data) {
   return request({
-    url: '/system/menu/delete',
+    url: '/system/menus/delete',
     method: 'delete',
     data: data
   })
@@ -71,7 +71,7 @@ export function delMenu(data) {
 // 更新状态
 export function changeStatus(id, status) {
   return request({
-    url: '/system/menu/status/' + id + '?status=' + status,
+    url: '/system/menus/status/' + id + '?status=' + status,
     method: 'post'
   })
 }
