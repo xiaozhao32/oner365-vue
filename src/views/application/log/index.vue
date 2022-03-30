@@ -2,14 +2,14 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
       <el-form-item label="日志等级" prop="level">
-        <el-input
-          v-model="queryParams.level"
-          placeholder="请输入日志等级"
-          clearable
-          size="small"
-          prefix-icon="el-icon-search"
-          @keyup.enter.native="handleQuery"
-        />
+        <el-select v-model="queryParams.level" placeholder="日志级别" clearable size="small">
+          <el-option
+            v-for="level in levelList"
+            :key="level.id"
+            :label="level.name"
+            :value="level.id"
+          />
+        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -76,6 +76,20 @@ export default {
         pageSize: 10,
         level: ''
       },
+      levelList:[
+        {
+          id: "info",
+          name: "INFO"
+        },
+        {
+          id: "warn",
+          name: "WARN"
+        },
+        {
+          id: "error",
+          name: "ERROR"
+        }
+      ],
       // 表单参数
       form: {
       },
