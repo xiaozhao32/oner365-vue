@@ -112,9 +112,8 @@ export default {
     },
     /** 操作查询 */
     handleOper(name) {
-      // 根据 es的 name 以后方便扩展
-      const data = "data";
-      this.$router.push("/monitor/elasticsearch/" + data);
+      // 根据 es的 name 扩展
+      this.$router.push("/monitor/elasticsearch/" + name);
     }
   }
 };

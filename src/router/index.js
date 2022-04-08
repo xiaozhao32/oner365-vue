@@ -146,15 +146,28 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/monitor/elasticsearch/data',
+    path: '/monitor/elasticsearch/samplegene',
     component: Layout,
     hidden: true,
     children: [
       {
         path: '',
-        component: (resolve) => require(['@/views/monitor/elasticsearch/data'], resolve),
+        component: (resolve) => require(['@/views/monitor/elasticsearch/samplegene'], resolve),
         name: 'ElasticsearchData',
         meta: { title: 'Elasticsearch查询' }
+      }
+    ]
+  },
+  {
+    path: '/monitor/elasticsearch/oner365-log',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '',
+        component: (resolve) => require(['@/views/application/log'], resolve),
+        name: 'ApplicationLog',
+        meta: { title: '应用日志' }
       }
     ]
   },
