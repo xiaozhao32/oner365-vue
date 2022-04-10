@@ -389,6 +389,7 @@ export default {
           return changeTaskStatus(row.id, row.status);
         }).then(() => {
           this.msgSuccess(text + "成功");
+          this.getList();
         }).catch(function() {
           row.status = row.status === "1" ? "1" : "0";
         });

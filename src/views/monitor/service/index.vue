@@ -189,6 +189,7 @@ export default {
 	          return changeStatus(row[0].serviceId, row.status);
 	        }).then(() => {
 	          this.msgSuccess(text + "成功");
+	          this.getList();
 	        }).catch(function() {
 	          row.status = row.status === "0" ? "1" : "0";
 	        });
