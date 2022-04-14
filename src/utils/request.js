@@ -70,7 +70,7 @@ error => {
     })
   }
   // 服务器异常
-  if (error.response.status !== 500) {
+  if (error.response.status === 500) {
     data = error.response.data.message
   }
   Message({
