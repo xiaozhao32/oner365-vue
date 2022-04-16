@@ -31,7 +31,7 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
+        <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button type="primary" icon="el-icon-plus" size="mini" @click="handleAdd">新增</el-button>
         <el-badge :value="countBage">
           <el-button type="success" icon="el-icon-files" size="mini" @click="handleMenuType">菜单类型列表</el-button>

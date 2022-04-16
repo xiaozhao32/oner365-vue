@@ -34,7 +34,7 @@
       <el-form-item>
         <el-button
           class="filter-item"
-          type="primary"
+          type="cyan"
           icon="el-icon-search"
           size="mini"
           @click="handleQuery"
