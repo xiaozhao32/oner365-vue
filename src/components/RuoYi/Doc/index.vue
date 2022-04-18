@@ -9,7 +9,7 @@ export default {
   name: 'Doc',
   data() {
     return {
-      url: '#'
+      url: 'https://gitee.com/xiaozhao32'
     }
   },
   methods: {
