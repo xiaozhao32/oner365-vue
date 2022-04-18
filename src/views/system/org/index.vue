@@ -105,7 +105,7 @@
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-row>
           <el-col :span="24">
-            <el-form-item label="上级部门"">
+            <el-form-item label="上级部门">
               <treeselect
                 v-model="form.parentId"
                 :options="orgOptions"

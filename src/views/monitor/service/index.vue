@@ -80,7 +80,7 @@
             <template slot-scope="scope">
         	  <table cellspacing="0" width="100%">
 		        <tbody>
-		          <tr v-for="(item,index) in scope.row.properties">
+		          <tr v-for="(item,index) in scope.row.properties" :key="index">
 		            <td width="30%">{{index}}</td>
 		            <td width="70%">{{item}}</td>
 		          </tr>
