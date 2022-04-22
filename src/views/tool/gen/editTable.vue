@@ -98,11 +98,11 @@
               <el-select v-model="scope.row.dictType" clearable filterable placeholder="请选择">
                 <el-option
                   v-for="dict in dictOptions"
-                  :key="dict.dictType"
-                  :label="dict.dictName"
-                  :value="dict.dictType">
-                  <span style="float: left">{{ dict.dictName }}</span>
-                  <span style="float: right; color: #8492a6; font-size: 13px">{{ dict.dictType }}</span>
+                  :key="dict.typeCode"
+                  :label="dict.typeName"
+                  :value="dict.typeCode">
+                  <span style="float: left">{{ dict.typeName }}</span>
+                  <span style="float: right; color: #8492a6; font-size: 13px">{{ dict.typeCode }}</span>
               </el-option>
               </el-select>
             </template>
@@ -158,7 +158,7 @@ export default {
       /** 查询字典下拉列表 */
       const data = {};
       getDictOptionselect(data).then(response => {
-        this.dictOptions = response;
+        this.dictOptions = response.content;
       });
     }
   },
