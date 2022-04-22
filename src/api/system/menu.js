@@ -9,7 +9,14 @@ export function listMenuType() {
 }
 
 // 查询菜单列表
-export function listMenu(data) {
+export function listMenu(queryParams) {
+  var data = {
+    whereList: [
+      { key: 'menuTypeId', opt: 'eq', val: queryParams.menuTypeId },
+      { key: 'menuName', opt: 'like', val: queryParams.menuName },
+      { key: 'status', opt: 'enum', val: queryParams.status }
+    ]
+  }
   return request({
     url: '/system/menus/list',
     method: 'post',
@@ -40,7 +47,7 @@ export function treeselect() {
 // 根据角色ID查询菜单下拉树结构
 export function roleMenuTreeselect(roleId, menuTypeId) {
   const data = {
-    'status': '1',
+    'status': 'YES',
     'menuTypeId': menuTypeId
   }
   return request({

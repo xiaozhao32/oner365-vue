@@ -10,7 +10,7 @@ export function listData(queryParams) {
       { key: 'typeId', opt: 'eq', val: queryParams.typeId },
       { key: 'itemCode', opt: 'like', val: queryParams.itemCode },
       { key: 'itemName', opt: 'like', val: queryParams.itemName },
-      { key: 'status', opt: 'eq', val: queryParams.status }
+      { key: 'status', opt: 'enum', val: queryParams.status }
     ]
   }
   return request({

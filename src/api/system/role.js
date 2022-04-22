@@ -17,7 +17,7 @@ export function listRole(queryParams) {
     },
     whereList: [
       { key: 'roleName', opt: 'like', val: queryParams.roleName },
-      { key: 'status', opt: 'eq', val: queryParams.status },
+      { key: 'status', opt: 'enum', val: queryParams.status },
       { key: 'createTime', opt: 'be', val: beginTime + '|' + endTime }
     ]
   }

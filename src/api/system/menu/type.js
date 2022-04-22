@@ -8,7 +8,7 @@ export function listMenuType(queryParams) {
     whereList: [
       { key: 'typeCode', opt: 'like', val: queryParams.typeCode },
       { key: 'typeName', opt: 'like', val: queryParams.typeName },
-      { key: 'status', opt: 'eq', val: queryParams.status }
+      { key: 'status', opt: 'enum', val: queryParams.status }
     ]
   }
   return request({

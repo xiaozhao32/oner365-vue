@@ -58,8 +58,8 @@
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.status"
-            active-value="1"
-            inactive-value="0"
+            active-value="YES"
+            inactive-value="NO"
             @change="handleStatusChange(scope.row)"
           ></el-switch>
         </template>
@@ -205,16 +205,14 @@ export default {
       title: "",
       // 是否显示弹出层
       open: false,
-      // 显示状态数据字典
-      visibleOptions: [],
       // 菜单状态数据字典
       statusOptions: [],
       menuTypeOptions: [],
       // 查询参数
       queryParams: {
-    	menuTypeId: undefined,
+    	  menuTypeId: undefined,
         menuName: undefined,
-        visible: undefined
+        status: undefined
       },
       // 表单参数
       form: {},
@@ -239,10 +237,7 @@ export default {
   created() {
     this.getList();
     this.getMenuTypeList();
-    this.getDicts("sys_show_hide").then(response => {
-      this.visibleOptions = response;
-    });
-    this.getDicts("sys_normal_disable").then(response => {
+    this.getDicts("sys_status").then(response => {
       this.statusOptions = response;
     });
   },
@@ -299,7 +294,7 @@ export default {
     },
     // 状态修改
     handleStatusChange(row) {
-      let text = row.status === "1" ? "启用" : "停用";
+      let text = row.status === "YES" ? "启用" : "停用";
       this.$confirm('确认要"' + text + '""' + row.menuName + '"用户吗?', "警告", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
@@ -310,7 +305,7 @@ export default {
         this.msgSuccess(text + "成功");
         this.getList();
       }).catch(function() {
-        row.status = row.status === "0" ? "1" : "0";
+        row.status = row.status === "NO" ? "YES" : "NO";
       });
     },
     // 取消按钮
@@ -327,7 +322,7 @@ export default {
         menuName: undefined,
         icon: undefined,
         menuOrder: 1,
-        status: '1'
+        status: 'YES'
       };
       this.resetForm("form");
     },

@@ -7,7 +7,7 @@ export function listRoute(params) {
     pageSize: params.pageSize,
     whereList: [
       { key: 'id', opt: 'like', val: params.id },
-      { key: 'status', val: params.status }
+      { key: 'status', opt: 'enum', val: params.status }
     ]
   }
   return request({

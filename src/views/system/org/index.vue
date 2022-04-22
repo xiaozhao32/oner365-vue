@@ -64,8 +64,8 @@
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.status"
-            active-value="1"
-            inactive-value="0"
+            active-value="YES"
+            inactive-value="NO"
             @change="handleStatusChange(scope.row)"
           ></el-switch>
         </template>
@@ -252,7 +252,7 @@ export default {
   created() {
     this.loading = false;
     this.getList();
-    this.getDicts("sys_normal_disable").then(response => {
+    this.getDicts("sys_status").then(response => {
       this.statusOptions = response;
     });
   },
@@ -310,7 +310,7 @@ export default {
         leader: undefined,
         phone: undefined,
         email: undefined,
-        status: '1'
+        status: 'YES'
       };
       this.resetForm("form");
     },
@@ -338,8 +338,8 @@ export default {
     },
     // 状态修改
     handleStatusChange(row) {
-      let text = row.status === "1" ? "启用" : "停用";
-      this.$confirm('确认要 "' + text + '" "' + row.typeName + '" 吗?', "警告", {
+      let text = row.status === "YES" ? "启用" : "停用";
+      this.$confirm('确认要 "' + text + '" 吗?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
@@ -349,7 +349,7 @@ export default {
           this.msgSuccess(text + "成功");
           this.getList();
         }).catch(function() {
-          row.status = row.status === "0" ? "1" : "0";
+          row.status = row.status === "NO" ? "YES" : "NO";
         });
     },
     /** 修改按钮操作 */

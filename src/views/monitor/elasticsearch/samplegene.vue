@@ -74,8 +74,8 @@
       <el-table-column label="基因类型" align="center" prop="geneType" width="180">
       	<template slot-scope="scope">
           <el-radio-group v-model="scope.row.geneType" size="small">
-	        <el-radio-button label="1">X</el-radio-button>
-	        <el-radio-button label="2">Y</el-radio-button>
+	        <el-radio-button label="X">X</el-radio-button>
+	        <el-radio-button label="Y">Y</el-radio-button>
 	      </el-radio-group>
         </template>
       </el-table-column>
@@ -125,8 +125,8 @@
           <el-col :span="12">
             <el-form-item label="基因类型">
               <el-radio-group v-model="form.geneType" size="small">
-                <el-radio-button label="1">X</el-radio-button>
-                <el-radio-button label="2">Y</el-radio-button>
+                <el-radio-button label="X">X</el-radio-button>
+                <el-radio-button label="Y">Y</el-radio-button>
               </el-radio-group>
             </el-form-item>
           </el-col>
@@ -282,7 +282,7 @@ export default {
       let ids = [row.id];
       if (row.id == undefined)
         ids = this.ids;
-      this.$confirm('是否确认删除 "' + ids + '" ?', "警告", {
+      this.$confirm('是否确认删除?', "警告", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"

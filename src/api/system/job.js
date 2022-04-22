@@ -8,7 +8,7 @@ export function listJob(queryParams) {
     order: { key: 'jobOrder', val: 'asc' },
     whereList: [
       { key: 'jobName', opt: 'like', val: queryParams.jobName },
-      { key: 'status', opt: 'eq', val: queryParams.status }
+      { key: 'status', opt: 'enum', val: queryParams.status }
     ]
   }
   return request({

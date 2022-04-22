@@ -66,9 +66,9 @@
         <el-table-column label="状态" prop="status">
           <template slot-scope="scope">
             <el-radio-group v-model="scope.row.status" size="small">
-            <el-radio-button label="GREEN">正常</el-radio-button>
-            <el-radio-button label="YELLOW">警告</el-radio-button>
-            <el-radio-button label="RED">错误</el-radio-button>
+            <el-radio-button label="OK">正常</el-radio-button>
+            <el-radio-button label="WARN">警告</el-radio-button>
+            <el-radio-button label="ERROR">错误</el-radio-button>
           </el-radio-group>
         </template>
         </el-table-column>

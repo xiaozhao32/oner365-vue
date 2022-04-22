@@ -91,8 +91,8 @@
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.status"
-            active-value="1"
-            inactive-value="0"
+            active-value="YES"
+            inactive-value="NO"
             @change="handleStatusChange(scope.row)"
           ></el-switch>
         </template>
@@ -293,7 +293,7 @@ export default {
   },
   created() {
     this.getList();
-    this.getDicts("sys_normal_disable").then(response => {
+    this.getDicts("sys_status").then(response => {
       this.statusOptions = response;
     });
   },
@@ -362,7 +362,7 @@ export default {
     },
     // 角色状态修改
     handleStatusChange(row) {
-      let text = row.status === "1" ? "启用" : "停用";
+      let text = row.status === "YES" ? "启用" : "停用";
       this.$confirm('确认要"' + text + '""' + row.roleName + '"角色吗?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
@@ -372,7 +372,7 @@ export default {
         }).then(() => {
           this.msgSuccess(text + "成功");
         }).catch(function() {
-          row.status = row.status === "0" ? "1" : "0";
+          row.status = row.status === "NO" ? "YES" : "NO";
         });
     },
     // 取消按钮
@@ -395,7 +395,7 @@ export default {
         roleName: undefined,
         roleCode: undefined,
         menuType: "",
-        status: "1",
+        status: "YES",
         menuIds: [],
         orgIds: [],
         roleDes: undefined
@@ -502,7 +502,7 @@ export default {
         pageSize: queryParams.pageSize,
         whereList: [
           { key: 'roleName', opt: 'like', val: queryParams.roleName },
-          { key: 'status', opt: 'eq', val: queryParams.status },
+          { key: 'status', opt: 'enum', val: queryParams.status },
           { key: 'createTime', opt: 'be', val: beginTime + '|' + endTime }
         ]
       }

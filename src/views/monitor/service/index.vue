@@ -159,9 +159,6 @@ export default {
 	},
 	created() {
 		this.getList();
-		this.getDicts("sys_normal_disable").then(response => {
-			this.statusOptions = response;
-	    });
 	},
 	methods: {
 		// 表单重置

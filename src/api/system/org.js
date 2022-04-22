@@ -1,7 +1,14 @@
 import request from '@/utils/request'
 
 // 查询单位列表
-export function listOrg(data) {
+export function listOrg(queryParams) {
+  var data = {
+    whereList: [
+      { key: 'orgCode', opt: 'eq', val: queryParams.orgCode },
+      { key: 'orgName', opt: 'like', val: queryParams.orgName },
+      { key: 'status', opt: 'enum', val: queryParams.status }
+    ]
+  }
   return request({
     url: '/system/org/list',
     method: 'post',
@@ -20,7 +27,7 @@ export function getOrg(orgId) {
 // 查询单位下拉树结构
 export function treeselect() {
   const data = {
-    'status': '1'
+    'status': 'YES'
   }
   return request({
     url: '/system/org/tree',
@@ -32,7 +39,7 @@ export function treeselect() {
 // 根据角色ID查询单位树结构
 export function userOrgTreeselect(userId) {
   const data = {
-    'status': '1'
+    'status': 'YES'
   }
   return request({
     url: '/system/org/user/' + userId,
