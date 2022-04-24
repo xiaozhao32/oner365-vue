@@ -28,22 +28,6 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="执行状态" prop="status">
-        <el-select
-          v-model="queryParams.status"
-          placeholder="请选择执行状态"
-          clearable
-          size="small"
-          style="width: 240px"
-        >
-          <el-option
-            v-for="dict in statusOptions"
-            :key="dict.itemCode"
-            :label="dict.itemName"
-            :value="dict.itemCode"
-          />
-        </el-select>
-      </el-form-item>
       <el-form-item label="执行时间">
         <el-date-picker
           v-model="dateRange"
@@ -100,8 +84,8 @@
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.status"
-            active-value="1"
-            inactive-value="0"
+            active-value="NORMAL"
+            inactive-value="PAUSE"
             disabled
           ></el-switch>
         </template>
@@ -157,8 +141,8 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="执行状态：">
-              <div v-if="form.status == 1">正常</div>
-              <div v-else-if="form.status == 0">失败</div>
+              <div v-if="form.status == 'NORMAL'">正常</div>
+              <div v-else-if="form.status == 'PAUSE'">暂停</div>
             </el-form-item>
           </el-col>
           <el-col :span="24">
@@ -217,7 +201,7 @@ export default {
   },
   created() {
     this.getList();
-    this.getDicts("sys_normal_disable").then(response => {
+    this.getDicts("sys_task_status").then(response => {
       this.statusOptions = response;
     });
     this.getDicts("sys_task_group").then(response => {

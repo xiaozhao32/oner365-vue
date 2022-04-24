@@ -11,8 +11,7 @@ export function listTask(params) {
     },
     whereList: [
       { key: 'taskName', opt: 'like', val: params.taskName },
-      { key: 'taskGroup', val: params.taskGroup },
-      { key: 'status', val: params.status }
+      { key: 'taskGroup', val: params.taskGroup }
     ]
   }
   return request({

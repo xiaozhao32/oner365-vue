@@ -21,16 +21,6 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="任务状态" prop="status">
-        <el-select v-model="queryParams.status" placeholder="请选择任务状态" clearable size="small">
-          <el-option
-            v-for="dict in statusOptions"
-            :key="dict.itemCode"
-            :label="dict.itemName"
-            :value="dict.itemCode"
-          />
-        </el-select>
-      </el-form-item>
       <el-form-item>
         <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -97,8 +87,8 @@
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.status"
-            active-value="1"
-            inactive-value="0"
+            active-value="NORMAL"
+            inactive-value="PAUSE"
             @change="handleStatusChange(scope.row)"
           ></el-switch>
         </template>
@@ -180,11 +170,11 @@
             </el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item label="错误策略" prop="misfirePolicy">
+            <el-form-item label="执行策略" prop="misfirePolicy">
               <el-radio-group v-model="form.misfirePolicy" size="small">
-                <el-radio-button label="1">立即执行</el-radio-button>
-                <el-radio-button label="2">执行一次</el-radio-button>
-                <el-radio-button label="3">放弃执行</el-radio-button>
+                <el-radio-button label="IGNORE">立即执行</el-radio-button>
+                <el-radio-button label="ONCE">执行一次</el-radio-button>
+                <el-radio-button label="NONE">放弃执行</el-radio-button>
               </el-radio-group>
             </el-form-item>
           </el-col>
@@ -230,8 +220,8 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="任务状态：">
-              <div v-if="form.status == 1">正常</div>
-              <div v-else-if="form.status == 0">失败</div>
+              <div v-if="form.status == 'NORMAL'">正常</div>
+              <div v-else-if="form.status == 'PAUSE'">暂停</div>
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -242,10 +232,10 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="执行策略：">
-              <div v-if="form.misfirePolicy == 0">默认策略</div>
-              <div v-else-if="form.misfirePolicy == 1">立即执行</div>
-              <div v-else-if="form.misfirePolicy == 2">执行一次</div>
-              <div v-else-if="form.misfirePolicy == 3">放弃执行</div>
+              <div v-if="form.misfirePolicy == 'DEFAULT'">默认策略</div>
+              <div v-else-if="form.misfirePolicy == 'IGNORE'">立即执行</div>
+              <div v-else-if="form.misfirePolicy == 'ONCE'">执行一次</div>
+              <div v-else-if="form.misfirePolicy == 'NONE'">放弃执行</div>
             </el-form-item>
           </el-col>
         </el-row>
@@ -320,7 +310,7 @@ export default {
     this.getDicts("sys_task_group").then(response => {
       this.taskGroupOptions = response;
     });
-    this.getDicts("sys_normal_disable").then(response => {
+    this.getDicts("sys_task_status").then(response => {
       this.statusOptions = response;
     });
   },
@@ -355,9 +345,9 @@ export default {
         taskGroup: undefined,
         invokeTarget: undefined,
         cronExpression: undefined,
-        misfirePolicy: 1,
+        misfirePolicy: 'DEFAULT',
         concurrent: 1,
-        status: "1"
+        status: 'PAUSE'
       };
       this.resetForm("form");
     },
@@ -380,7 +370,7 @@ export default {
     },
     // 任务状态修改
     handleStatusChange(row) {
-      let text = row.status === "1" ? "启用" : "停用";
+      let text = row.status === "NORMAL" ? "启用" : "停用";
       this.$confirm('确认要"' + text + '""' + row.taskName + '"任务吗?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
@@ -391,7 +381,7 @@ export default {
           this.msgSuccess(text + "成功");
           this.getList();
         }).catch(function() {
-          row.status = row.status === "1" ? "1" : "0";
+          row.status = row.status === "NORMAL" ? "NORMAL" : "PAUSE";
         });
     },
     /* 立即执行一次 */
