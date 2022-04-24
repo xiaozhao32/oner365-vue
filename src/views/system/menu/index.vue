@@ -365,9 +365,11 @@ export default {
           saveMenu(this.form).then(response => {
             if (response.code === 1) {
               this.msgSuccess("保存成功");
-              this.open = false;
-              this.getList();
+            } else {
+              this.msgError(response.msg);
             }
+            this.open = false;
+            this.getList();
           });
         }
       });

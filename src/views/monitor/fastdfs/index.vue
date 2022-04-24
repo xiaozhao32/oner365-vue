@@ -31,7 +31,7 @@
       </el-table-column>
       <el-table-column label="存储类型" align="center" prop="fileSuffix" width="90">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.fileStorage === 'local' ? 'success' : 'danger'">
+          <el-tag :type="scope.row.fileStorage === 'LOCAL' ? 'success' : 'danger'">
             {{ scope.row.fileStorage }}
           </el-tag>
         </template>

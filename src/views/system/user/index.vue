@@ -253,7 +253,7 @@
           <el-col :span="12">
             <el-form-item label="用户类型">
               <el-radio-group v-model="form.userType" size="small">
-                <el-radio-button label="1">默认</el-radio-button>
+                <el-radio-button label="DEFAULT">默认</el-radio-button>
               </el-radio-group>
             </el-form-item>
           </el-col>
@@ -471,7 +471,7 @@ export default {
     /** 根据角色ID查询菜单树结构 */
     getOrgMenuTreeselect(id) {
       return userOrgTreeselect(id).then(response => {
-        this.orgOptions = response.orgList;
+        this.orgOptions = response.menus;
         return response;
       });
     },
@@ -525,8 +525,10 @@ export default {
         email: undefined,
         sex: undefined,
         status: 'YES',
+        activeStatus: 'YES',
         remark: undefined,
         isAdmin: '0',
+        userType: 'DEFAULT',
         jobs: [],
         roles: [],
         orgs: [],
@@ -607,9 +609,11 @@ export default {
           saveUser(this.form).then(response => {
             if (response.code === 1) {
               this.msgSuccess("保存成功");
-              this.open = false;
-              this.getList();
+            } else {
+              this.msgError(response.msg);
             }
+            this.open = false;
+            this.getList();
           });
         }
       });
