@@ -10,7 +10,8 @@ export function listFile(params) {
       val: 'desc' 
     },
     whereList: [
-      { key: 'displayName', opt: 'like', val: params.displayName }
+      { key: 'displayName', opt: 'like', val: params.displayName },
+      { key: 'fileStorage', opt: 'enum', val: params.fileStorage },
     ]
   }
   return request({

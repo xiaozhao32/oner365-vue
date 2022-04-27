@@ -11,6 +11,13 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      <el-form-item label="存储类型" prop="fileStorage">
+        <el-select v-model="queryParams.fileStorage" placeholder="请选择存储类型" clearable size="small">
+          <el-option key="LOCAL" value="LOCAL" label="本地存储(LOCAL)" />
+          <el-option key="MINIO" value="MINIO" label="分布式存储(MINIO)" />
+          <el-option key="FDFS" value="FDFS" label="分布式存储(FDFS)" />
+        </el-select>
+      </el-form-item>
       <el-form-item>
         <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
