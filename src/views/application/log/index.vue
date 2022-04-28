@@ -22,9 +22,9 @@
       <el-table-column label="名称" prop="loggerName" width="180" />
       <el-table-column label="日志等级" align="center" prop="level" width="100">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.level === 'ERROR' ? 'danger' : 'success'">
-            {{ scope.row.level }}
-          </el-tag>
+          <el-tag type="success" v-if="scope.row.level==='INFO'">{{ scope.row.level }}</el-tag>
+          <el-tag type="warning" v-if="scope.row.level==='WARN'">{{ scope.row.level }}</el-tag>
+          <el-tag type="danger" v-if="scope.row.level==='ERROR'">{{ scope.row.level }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="日志内容" prop="message" />
@@ -142,7 +142,7 @@ export default {
       let ids = [row.id];
       if (row.id == undefined)
         ids = this.ids;
-      this.$confirm('是否确认删除 "' + ids + '" ?', "警告", {
+      this.$confirm('是否确认删除?', "警告", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
