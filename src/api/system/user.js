@@ -5,9 +5,10 @@ import { praseStrEmpty } from '@/utils/ruoyi'
 export function listUser(queryParams) {
   var beginTime = '';
   var endTime = '';
-  if (queryParams.beginTime != undefined && queryParams.endTime != undefined) {
-    beginTime = queryParams.beginTime;
-    endTime = queryParams.endTime;
+  if (queryParams.beginTime != undefined && queryParams.beginTime != '' 
+      && queryParams.endTime != undefined && queryParams.endTime != '') {
+        beginTime = queryParams.beginTime + ' 00:00:00';
+        endTime = queryParams.endTime + ' 23:59:59';
   }
   var data = {
     pageIndex: queryParams.pageIndex,
