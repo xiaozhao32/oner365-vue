@@ -239,7 +239,7 @@ export default {
     },
     // 多选框选中数据
     handleSelectionChange(selection) {
-      this.ids = selection.map(item => item.jobId)
+      this.ids = selection.map(item => item.id)
       this.names = selection.map(item => item.jobName)
       this.single = selection.length!=1
       this.multiple = !selection.length
