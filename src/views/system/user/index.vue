@@ -334,7 +334,7 @@ export default {
       } else {
         const id = this.form.id;
         checkUserName(id, value).then(response => {
-          if (response === 1) {
+          if (response === true) {
             callback(new Error('用户名称已存在'));
           } else {
             callback();

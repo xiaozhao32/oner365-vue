@@ -171,7 +171,7 @@ export default {
       } else {
         const id = this.form.id;
         checkCode(id, value).then(response => {
-          if (response === 1) {
+          if (response === true) {
             callback(new Error('字典编号已存在'));
           } else {
             callback();

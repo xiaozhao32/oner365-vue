@@ -151,7 +151,7 @@ export default {
       } else {
         const id = this.form.id;
         checkCode(id, value).then(response => {
-          if (response === 1) {
+          if (response === true) {
             callback(new Error('标识已存在'));
           } else {
             callback();

@@ -168,7 +168,7 @@ export default {
         const id = this.form.id;
         const typeId = this.form.typeId;
         checkCode(id, typeId, value).then(response => {
-          if (response === 1) {
+          if (response === true) {
             callback(new Error('字典编号已存在'));
           } else {
             callback();

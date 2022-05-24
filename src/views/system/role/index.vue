@@ -201,7 +201,7 @@ export default {
       } else {
         const id = this.form.id;
         checkRoleName(id, value).then(response => {
-          if (response === 1) {
+          if (response === true) {
             callback(new Error('角色名称已存在'));
           } else {
             callback();
