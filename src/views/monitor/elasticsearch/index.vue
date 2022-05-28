@@ -57,6 +57,20 @@
 
   <el-row>
 	  <el-table v-loading="loading" :data="this.entity.clusterList">
+      <el-table-column type="expand">
+        <template slot-scope="props">
+          <el-form label-position="left" inline class="demo-table-expand">
+            <div v-for="item in props.row.mappingList" :key="item">
+              <el-form-item label="字段名称">
+                <el-input v-model="item.name" readonly />
+              </el-form-item>
+              <el-form-item label="类型">
+                <el-input v-model="item.type" readonly />
+              </el-form-item>
+            </div>
+          </el-form>
+        </template>
+      </el-table-column>
 	    <el-table-column label="序号"  type="index" width="80px">
 	      <template slot-scope="scope">{{ scope.$index+1 }}</template>
 	    </el-table-column>
