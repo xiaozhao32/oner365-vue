@@ -7,7 +7,8 @@ export function applicationLogList(params) {
 	  pageSize: params.pageSize,
     order: { key: 'createTime', val: 'desc' },
 	  whereList: [
-      { key: 'level', val: params.level }
+      { key: 'level', val: params.level },
+      { key: 'LOG_NAME', val: params.projectName}
 	  ]
   }
   return request({

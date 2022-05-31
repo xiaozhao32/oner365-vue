@@ -1,6 +1,17 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
+  
+      <el-form-item label="服务名称" prop="projectName">
+        <el-select v-model="queryParams.projectName" placeholder="服务名称" clearable size="small">
+          <el-option
+            v-for="project in projectList"
+            :key="project"
+            :label="project"
+            :value="project"
+          />
+        </el-select>
+      </el-form-item>
       <el-form-item label="日志等级" prop="level">
         <el-select v-model="queryParams.level" placeholder="日志级别" clearable size="small">
           <el-option
@@ -11,6 +22,7 @@
           />
         </el-select>
       </el-form-item>
+
       <el-form-item>
         <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -19,7 +31,8 @@
     
     <el-table v-loading="loading" :data="dataList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="50" align="center" prop="id" />
-      <el-table-column label="名称" prop="loggerName" width="180" />
+      <el-table-column label="服务名称" prop="projectName" width="180" />
+      <el-table-column label="类名称" prop="loggerName" width="180" />
       <el-table-column label="日志等级" align="center" prop="level" width="100">
         <template slot-scope="scope">
           <el-tag type="success" v-if="scope.row.level==='INFO'">{{ scope.row.level }}</el-tag>
@@ -52,6 +65,7 @@
 
 <script>
 import { applicationLogList, getApplicationLog, deleteApplicationLog } from "@/api/application/log";
+import { listRoute } from "@/api/monitor/route"
 export default {
   name: "Data",
   data() {
@@ -74,7 +88,8 @@ export default {
       queryParams: {
     	  pageIndex: 1,
         pageSize: 10,
-        level: ''
+        level: '',
+        projectName: ''
       },
       levelList:[
         {
@@ -90,6 +105,7 @@ export default {
           name: "ERROR"
         }
       ],
+      projectList: [],
       // 表单参数
       form: {
       },
@@ -100,7 +116,8 @@ export default {
     };
   },
   created() {
-	this.getList();
+	  this.getList();
+    this.getProjectList();
   },
   methods: {
     getList() {
@@ -109,6 +126,14 @@ export default {
     	  this.dataList = response.content;
         this.total = response.totalElements;
         this.loading = false;
+      });
+    },
+    getProjectList() {
+      var params = {};
+      listRoute(params).then(response => {
+        response.content.forEach( element => {
+          this.projectList.push(element.id.substring(8));
+        });
       });
     },
     // 取消按钮
