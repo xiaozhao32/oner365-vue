@@ -74,7 +74,6 @@
 
     <el-table v-loading="loading" :data="taskList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="任务编号" align="center" prop="id" />
       <el-table-column label="任务名称" align="center" prop="taskName" :show-overflow-tooltip="true" />
       <el-table-column label="任务组名" align="center" prop="taskGroup" :formatter="taskGroupFormat">
         <template slot-scope="scope">
@@ -91,6 +90,11 @@
             inactive-value="PAUSE"
             @change="handleStatusChange(scope.row)"
           ></el-switch>
+        </template>
+      </el-table-column>
+      <el-table-column label="创建时间" align="center" prop="createTime" width="180">
+        <template slot-scope="scope">
+          <span>{{ parseTime(scope.row.createTime) }}</span>
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">

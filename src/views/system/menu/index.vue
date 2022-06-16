@@ -33,6 +33,8 @@
       <el-form-item>
         <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button type="primary" icon="el-icon-plus" size="mini" @click="handleAdd">新增</el-button>
+      </el-form-item>
+      <el-form-item>
         <el-badge :value="countBage">
           <el-button type="success" icon="el-icon-files" size="mini" @click="handleMenuType">菜单类型列表</el-button>
         </el-badge>
@@ -45,15 +47,15 @@
       row-key="id"
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
     >
-      <el-table-column prop="menuName" label="菜单名称" :show-overflow-tooltip="true" width="160"></el-table-column>
-      <el-table-column prop="id" label="编号" width="100"></el-table-column>
+      <el-table-column prop="menuName" label="菜单名称" :show-overflow-tooltip="true" width="180" />
+      <el-table-column prop="id" label="编号" width="100" />
       <el-table-column prop="icon" label="图标" align="center" width="100">
         <template slot-scope="scope">
           <svg-icon :icon-class="scope.row.icon" />
         </template>
       </el-table-column>
-      <el-table-column prop="menuOrder" label="排序" width="60"></el-table-column>
-      <el-table-column prop="path" label="组件路径" :show-overflow-tooltip="true"></el-table-column>
+      <el-table-column prop="menuOrder" label="排序" width="60" />
+      <el-table-column prop="path" label="组件路径" :show-overflow-tooltip="true" />
       <el-table-column label="状态" align="center" width="100">
         <template slot-scope="scope">
           <el-switch
@@ -64,7 +66,7 @@
           ></el-switch>
         </template>
       </el-table-column>
-      <el-table-column label="创建时间" align="center" prop="createTime">
+      <el-table-column label="创建时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime }}</span>
         </template>

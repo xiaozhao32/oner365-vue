@@ -84,9 +84,9 @@
 
     <el-table v-loading="loading" :data="roleList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" prop="id" />
-      <el-table-column label="角色编号" prop="roleCode" width="150" />
-      <el-table-column label="角色名称" prop="roleName" :show-overflow-tooltip="true" width="150" />
-      <el-table-column label="角色描述" prop="roleDes" :show-overflow-tooltip="true" width="150" />
+      <el-table-column label="角色编号" prop="roleCode" width="180" />
+      <el-table-column label="角色名称" prop="roleName" :show-overflow-tooltip="true" width="180" />
+      <el-table-column label="角色描述" prop="roleDes" :show-overflow-tooltip="true" />
       <el-table-column label="状态" align="center" width="100">
         <template slot-scope="scope">
           <el-switch
