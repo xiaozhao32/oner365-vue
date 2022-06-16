@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询岗位列表
+// 查询操作列表
 export function listOperation(queryParams) {
   var data = {
     pageIndex: queryParams.pageIndex,
@@ -18,7 +18,7 @@ export function listOperation(queryParams) {
   })
 }
 
-// 查询岗位详细
+// 查询操作详细
 export function getOperation(operationId) {
   return request({
     url: '/system/menu/operation/get/' + operationId,
@@ -26,7 +26,7 @@ export function getOperation(operationId) {
   })
 }
 
-// 保存岗位
+// 保存操作
 export function saveOperation(data) {
   return request({
     url: '/system/menu/operation/save',
