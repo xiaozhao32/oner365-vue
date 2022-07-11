@@ -172,6 +172,19 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/monitor/elasticsearch/samplelocation',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '',
+        component: (resolve) => require(['@/views/monitor/elasticsearch/samplelocation'], resolve),
+        name: 'Samplelocation',
+        meta: { title: '位置信息查询' }
+      }
+    ]
+  },
+  {
     path: '/monitor/rabbitmq/connectionList',
     component: Layout,
     hidden: true,
