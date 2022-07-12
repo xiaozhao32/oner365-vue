@@ -162,7 +162,7 @@ export default {
   data() {
 
     var validateCode = (rule, value, callback) => {
-      if (value === '') {
+      if (value === undefined || value === '') {
         callback(new Error('字典编号不能为空'));
       } else {
         const id = this.form.id;

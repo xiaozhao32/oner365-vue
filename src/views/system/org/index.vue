@@ -181,7 +181,7 @@ export default {
   components: { Treeselect },
   data() {
     var validateOrgCode = (rule, value, callback) => {
-      if (value === '') {
+      if (value === undefined || value === '') {
         callback(new Error('机构编号不能为空'));
       } else {
         const id = this.form.id;

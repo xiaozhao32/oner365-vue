@@ -146,7 +146,7 @@ export default {
   data() {
 
     var validateCode = (rule, value, callback) => {
-      if (value === '') {
+      if (value === undefined || value === '') {
         callback(new Error('标识不能为空'));
       } else {
         const id = this.form.id;

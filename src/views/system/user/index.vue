@@ -329,7 +329,7 @@ export default {
   components: { Treeselect },
   data() {
     var validateUserName = (rule, value, callback) => {
-      if (value === '') {
+      if (value === undefined || value === '') {
         callback(new Error('用户名称不能为空'));
       } else {
         const id = this.form.id;
