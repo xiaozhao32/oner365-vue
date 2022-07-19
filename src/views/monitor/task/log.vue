@@ -158,7 +158,8 @@
 </template>
 
 <script>
-import { listTaskLog, delTaskLog, exportTaskLog, cleanTaskLog } from "@/api/monitor/taskLog";
+import { listTaskLog, delTaskLog, cleanTaskLog } from "@/api/monitor/taskLog";
+import { exportFile } from "@/utils/zipdownload";
 
 export default {
   name: "TaskLog",
@@ -280,16 +281,24 @@ export default {
     },
     /** 导出按钮操作 */
     handleExport() {
-      const queryParams = this.queryParams;
-      this.$confirm("是否确认导出所有日志数据项?", "警告", {
-          confirmButtonText: "确定",
-          cancelButtonText: "取消",
-          type: "warning"
-        }).then(function() {
-          return exportTaskLog(queryParams);
-        }).then(response => {
-          this.download(response.msg);
-        }).catch(function() {});
+      var data = {
+        order: {
+          key: "createTime",
+          val: "desc"
+        },
+        whereList: [
+          { key: 'taskName', opt: 'like', val: this.queryParams.taskName },
+          { key: 'taskGroup', val: this.queryParams.taskGroup }
+        ]
+      }
+      const url = '/monitor/taskLog/export';
+      this.$confirm('是否确认导出所有数据项?', "警告", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      }).then(function() {
+        exportFile(url, data);        	
+      });
     }
   }
 };

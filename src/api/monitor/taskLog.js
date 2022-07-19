@@ -41,11 +41,3 @@ export function cleanTaskLog() {
   })
 }
 
-// 导出调度日志
-export function exportTaskLog(query) {
-  return request({
-    url: '/monitor/taskLog/export',
-    method: 'get',
-    params: query
-  })
-}

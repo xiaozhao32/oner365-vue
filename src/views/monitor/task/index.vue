@@ -252,7 +252,8 @@
 </template>
 
 <script>
-import { listTask, getTask, delTask, addTask, updateTask, exportTask, runTask, changeTaskStatus } from "@/api/monitor/task";
+import { listTask, getTask, delTask, addTask, updateTask, runTask, changeTaskStatus } from "@/api/monitor/task";
+import { exportFile } from "@/utils/zipdownload";
 
 export default {
   name: "Task",
@@ -469,16 +470,24 @@ export default {
     },
     /** 导出按钮操作 */
     handleExport() {
-      const queryParams = this.queryParams;
-      this.$confirm("是否确认导出所有定时任务数据项?", "警告", {
-          confirmButtonText: "确定",
-          cancelButtonText: "取消",
-          type: "warning"
-        }).then(function() {
-          return exportTask(queryParams);
-        }).then(response => {
-          this.download(response.msg);
-        }).catch(function() {});
+      var data = {
+        order: {
+          key: "createTime",
+          val: "desc"
+        },
+        whereList: [
+          { key: 'taskName', opt: 'like', val: this.queryParams.taskName },
+          { key: 'taskGroup', val: this.queryParams.taskGroup }
+        ]
+      }
+      const url = '/monitor/task/export';
+      this.$confirm('是否确认导出所有数据项?', "警告", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      }).then(function() {
+        exportFile(url, data);        	
+      });
     }
   }
 };

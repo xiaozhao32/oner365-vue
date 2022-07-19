@@ -313,18 +313,15 @@ export default {
     },
     /** 导出按钮操作 */
     handleExport() {
-      const queryParams = this.queryParams;
       var data = {
-        pageIndex: queryParams.pageIndex,
-        pageSize: queryParams.pageSize,
         order: {
 	      key: "createTime",
 	      val: "desc"
 	    },
         whereList: [
-          { key: 'methodName', opt: 'eq', val: queryParams.methodName },
-          { key: 'operationName', opt: 'like', val: queryParams.operationName },
-          { key: 'operationIp', opt: 'like', val: queryParams.operationIp }
+          { key: 'methodName', opt: 'eq', val: this.queryParams.methodName },
+          { key: 'operationName', opt: 'like', val: this.queryParams.operationName },
+          { key: 'operationIp', opt: 'like', val: this.queryParams.operationIp }
         ]
       }
       const url = '/system/log/export';

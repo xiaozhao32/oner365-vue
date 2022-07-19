@@ -56,15 +56,6 @@ export function delTask(data) {
   })
 }
 
-// 导出定时任务调度
-export function exportTask(query) {
-  return request({
-    url: '/monitor/task/export',
-    method: 'get',
-    params: query
-  })
-}
-
 // 任务状态修改
 export function changeTaskStatus(id, status) {
   const data = {

@@ -320,14 +320,11 @@ export default {
     },
     /** 导出按钮操作 */
     handleExport() {
-      const queryParams = this.queryParams;
       var data = {
-        pageIndex: queryParams.pageIndex,
-        pageSize: queryParams.pageSize,
         order: { key: 'createTime', val: 'desc' },
         whereList: [
-          { key: 'operationName', opt: 'like', val: queryParams.operationName },
-          { key: 'status', opt: 'enum', val: queryParams.status }
+          { key: 'operationName', opt: 'like', val: this.queryParams.operationName },
+          { key: 'status', opt: 'enum', val: this.queryParams.status }
         ]
       }
       const url = '/system/menu/operation/export';

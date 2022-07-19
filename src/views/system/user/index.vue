@@ -637,19 +637,16 @@ export default {
     },
     /** 导出按钮操作 */
     handleExport() {
-      const queryParams = this.queryParams;
       var beginTime = '';
       var endTime = '';
-      if (queryParams.beginTime != undefined && queryParams.endTime != undefined) {
-        beginTime = queryParams.beginTime;
-        endTime = queryParams.endTime;
+      if (this.queryParams.beginTime != undefined && this.queryParams.endTime != undefined) {
+        beginTime = this.queryParams.beginTime;
+        endTime = this.queryParams.endTime;
       }
       var data = {
-        pageIndex: queryParams.pageIndex,
-        pageSize: queryParams.pageSize,
         whereList: [
-          { key: 'userName', opt: 'like', val: queryParams.userName },
-          { key: 'realName', opt: 'like', val: queryParams.realName },
+          { key: 'userName', opt: 'like', val: this.queryParams.userName },
+          { key: 'realName', opt: 'like', val: this.queryParams.realName },
           { key: 'createTime', opt: 'be', val: beginTime + '|' + endTime }
         ]
       }

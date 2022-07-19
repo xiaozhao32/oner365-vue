@@ -368,16 +368,13 @@ export default {
     },
     /** 导出按钮操作 */
     handleExport() {
-      const queryParams = this.queryParams;
       var data = {
-        pageIndex: queryParams.pageIndex,
-        pageSize: queryParams.pageSize,
         order: { key: 'itemOrder', val: 'asc' },
         whereList: [
-          { key: 'typeId', opt: 'eq', val: queryParams.typeId },
-          { key: 'itemCode', opt: 'like', val: queryParams.itemCode },
-          { key: 'itemName', opt: 'like', val: queryParams.itemName },
-          { key: 'status', opt: 'enum', val: queryParams.status }
+          { key: 'typeId', opt: 'eq', val: this.queryParams.typeId },
+          { key: 'itemCode', opt: 'like', val: this.queryParams.itemCode },
+          { key: 'itemName', opt: 'like', val: this.queryParams.itemName },
+          { key: 'status', opt: 'enum', val: this.queryParams.status }
         ]
       }
       const url = '/system/dict/item/export';

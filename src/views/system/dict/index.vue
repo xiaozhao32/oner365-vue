@@ -345,14 +345,11 @@ export default {
     },
     /** 导出按钮操作 */
     handleExport() {
-      const queryParams = this.queryParams;
       var data = {
-        pageIndex: queryParams.pageIndex,
-        pageSize: queryParams.pageSize,
         whereList: [
-          { key: 'typeCode', opt: 'like', val: queryParams.typeCode },
-          { key: 'typeName', opt: 'like', val: queryParams.typeName },
-          { key: 'status', opt: 'enum', val: queryParams.status }
+          { key: 'typeCode', opt: 'like', val: this.queryParams.typeCode },
+          { key: 'typeName', opt: 'like', val: this.queryParams.typeName },
+          { key: 'status', opt: 'enum', val: this.queryParams.status }
         ]
       }
       const url = '/system/dict/type/export';
