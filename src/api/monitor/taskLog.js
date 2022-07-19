@@ -25,10 +25,11 @@ export function listTaskLog(params) {
 }
 
 // 删除调度日志
-export function delTaskLog(taskLogId) {
+export function delTaskLog(data) {
   return request({
-    url: '/monitor/taskLog/' + taskLogId,
-    method: 'delete'
+    url: '/monitor/taskLog/delete',
+    method: 'delete',
+    data: data
   })
 }
 

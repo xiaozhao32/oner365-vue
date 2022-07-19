@@ -48,10 +48,11 @@ export function updateTask(data) {
 }
 
 // 删除定时任务调度
-export function delTask(id) {
+export function delTask(data) {
   return request({
-    url: '/monitor/task/' + id,
-    method: 'delete'
+    url: '/monitor/task/delete',
+    method: 'delete',
+    data: data
   })
 }
 

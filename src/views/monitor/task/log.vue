@@ -254,8 +254,7 @@ export default {
       let ids = [row.id];
       if (row.id == undefined)
         ids = this.ids;
-      const names = row.taskName || this.names;
-      this.$confirm('是否确认删除 "' + names + '" ?', "警告", {
+      this.$confirm('是否确认删除?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
