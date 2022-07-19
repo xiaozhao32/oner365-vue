@@ -55,7 +55,8 @@
         </template>
       </el-table-column>
       <el-table-column prop="menuOrder" label="排序" width="60" />
-      <el-table-column prop="path" label="组件路径" :show-overflow-tooltip="true" />
+      <el-table-column prop="path" label="前端路径" :show-overflow-tooltip="true" />
+      <el-table-column prop="component" label="后端路径" :show-overflow-tooltip="true" />
       <el-table-column label="状态" align="center" width="100">
         <template slot-scope="scope">
           <el-switch
@@ -110,11 +111,15 @@
               />
             </el-form-item>
           </el-col>
+        </el-row>
+        <el-row>
           <el-col :span="24">
             <el-form-item label="主键编号" prop="id">
               <el-input v-model="form.id" placeholder="请输入主键编号" />
             </el-form-item>
           </el-col>
+        </el-row>
+        <el-row>
           <el-col :span="24">
             <el-form-item label="菜单图标">
               <el-popover
@@ -137,6 +142,8 @@
               </el-popover>
             </el-form-item>
           </el-col>
+        </el-row>
+        <el-row>
           <el-col :span="12">
             <el-form-item label="菜单名称" prop="menuName">
               <el-input v-model="form.menuName" placeholder="请输入菜单名称" />
@@ -147,16 +154,20 @@
               <el-input-number v-model="form.menuOrder" controls-position="right" :min="0" />
             </el-form-item>
           </el-col>
+        </el-row>
+        <el-row>
           <el-col :span="12">
-            <el-form-item label="路由地址" prop="path">
-              <el-input v-model="form.path" placeholder="请输入路由地址" />
+            <el-form-item label="前端路径" prop="path">
+              <el-input v-model="form.path" placeholder="请输入前端路径" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="组件路径" prop="component">
-              <el-input v-model="form.component" placeholder="请输入组件路径" />
+            <el-form-item label="后端路径" prop="component">
+              <el-input v-model="form.component" placeholder="请输入后端路径" />
             </el-form-item>
           </el-col>
+        </el-row>
+        <el-row>
           <el-col :span="12">
             <el-form-item label="菜单状态">
               <el-radio-group v-model="form.status">
@@ -168,6 +179,8 @@
               </el-radio-group>
             </el-form-item>
           </el-col>
+        </el-row>
+        <el-row>
           <el-col :span="24">
             <el-form-item label="备注" prop="menuDescription">
               <el-input v-model="form.menuDescription" type="textarea" placeholder="请输入描述"></el-input>
@@ -231,7 +244,7 @@ export default {
           { required: true, message: "菜单顺序不能为空", trigger: "blur" }
         ],
         path: [
-          { required: true, message: "路由地址不能为空", trigger: "blur" }
+          { required: true, message: "前端路径不能为空", trigger: "blur" }
         ]
       }
     };
