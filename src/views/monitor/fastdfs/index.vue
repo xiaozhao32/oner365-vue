@@ -195,7 +195,7 @@ export default {
         cancelButtonText: "取消",
         type: "warning"
       }).then(function() {
-        deleteFile(ids);
+        return deleteFile(ids);
       }).then(() => {
         this.getList();
         this.msgSuccess("删除成功");
