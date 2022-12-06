@@ -77,12 +77,13 @@
         <el-table-column label="索引名称" prop="index" />
         <el-table-column label="分片个数" prop="numberOfShards" />
         <el-table-column label="节点个数" prop="numberOfReplicas" />
-        <el-table-column label="状态" prop="status">
+        <el-table-column label="状态" prop="status" width="320px">
           <template slot-scope="scope">
             <el-radio-group v-model="scope.row.status" size="small">
-            <el-radio-button label="OK">正常</el-radio-button>
-            <el-radio-button label="WARN">警告</el-radio-button>
-            <el-radio-button label="ERROR">错误</el-radio-button>
+            <el-radio-button label="Started">正常</el-radio-button>
+            <el-radio-button label="Initializing">初始化</el-radio-button>
+            <el-radio-button label="Unassigned">未赋值</el-radio-button>
+            <el-radio-button label="Relocating">迁移</el-radio-button>
           </el-radio-group>
         </template>
         </el-table-column>
