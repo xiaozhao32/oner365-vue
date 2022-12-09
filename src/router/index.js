@@ -159,7 +159,7 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/monitor/elasticsearch/oner365-log',
+    path: '/monitor/elasticsearch/applicationlog',
     component: Layout,
     hidden: true,
     children: [
