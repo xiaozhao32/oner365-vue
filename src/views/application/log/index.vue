@@ -3,7 +3,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
   
       <el-form-item label="服务名称" prop="projectName">
-        <el-select v-model="queryParams.projectName" placeholder="服务名称" clearable size="small">
+        <el-select id="projectName" v-model="queryParams.projectName" placeholder="服务名称" clearable size="small">
           <el-option
             v-for="project in projectList"
             :key="project"
@@ -13,7 +13,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="日志等级" prop="level">
-        <el-select v-model="queryParams.level" placeholder="日志级别" clearable size="small">
+        <el-select id="level" v-model="queryParams.level" placeholder="日志级别" clearable size="small">
           <el-option
             v-for="level in levelList"
             :key="level.id"
@@ -31,8 +31,8 @@
     
     <el-table v-loading="loading" :data="dataList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="50" align="center" prop="id" />
-      <el-table-column label="服务名称" prop="projectName" width="180" />
-      <el-table-column label="类名称" prop="loggerName" width="180" />
+      <el-table-column label="服务名称" prop="projectName" width="200" />
+      <el-table-column label="类名称" prop="loggerName" width="200" />
       <el-table-column label="日志等级" align="center" prop="level" width="100">
         <template slot-scope="scope">
           <el-tag type="success" v-if="scope.row.level==='INFO'">{{ scope.row.level }}</el-tag>

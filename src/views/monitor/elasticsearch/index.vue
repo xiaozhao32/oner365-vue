@@ -62,10 +62,10 @@
           <el-form label-position="left" inline class="demo-table-expand">
             <div v-for="item in props.row.mappingList" :key="item">
               <el-form-item label="字段名称">
-                <el-input v-model="item.name" readonly />
+                <el-input id="name" v-model="item.name" readonly />
               </el-form-item>
               <el-form-item label="类型">
-                <el-input v-model="item.type" readonly />
+                <el-input id="type" v-model="item.type" readonly />
               </el-form-item>
             </div>
           </el-form>
@@ -79,7 +79,7 @@
         <el-table-column label="节点个数" prop="numberOfReplicas" />
         <el-table-column label="状态" prop="status" width="320px">
           <template slot-scope="scope">
-            <el-radio-group v-model="scope.row.status" size="small">
+            <el-radio-group id="status" v-model="scope.row.status" size="small">
             <el-radio-button label="Started">正常</el-radio-button>
             <el-radio-button label="Initializing">初始化</el-radio-button>
             <el-radio-button label="Unassigned">未赋值</el-radio-button>

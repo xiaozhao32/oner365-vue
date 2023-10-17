@@ -1,8 +1,9 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true">
-      <el-form-item label="部门编号">
+      <el-form-item label="部门编号" prop="orgCode">
         <el-input
+          id="orgCode"
           v-model="queryParams.orgCode"
           placeholder="请输入部门编号"
           clearable
@@ -11,8 +12,9 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="部门名称">
+      <el-form-item label="部门名称" prop="orgName">
         <el-input
+          id="orgName"
           v-model="queryParams.orgName"
           placeholder="请输入部门名称"
           clearable
@@ -21,8 +23,8 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="状态">
-        <el-select v-model="queryParams.status" placeholder="部门状态" clearable size="small">
+      <el-form-item label="状态" prop="status">
+        <el-select id="status" v-model="queryParams.status" placeholder="部门状态" clearable size="small">
           <el-option
             v-for="dict in statusOptions"
             :key="dict.itemCode"
@@ -63,6 +65,7 @@
       <el-table-column label="状态"  align="center" width="100">
         <template slot-scope="scope">
           <el-switch
+            name="columnStatus"
             v-model="scope.row.status"
             active-value="YES"
             inactive-value="NO"
@@ -70,7 +73,7 @@
           ></el-switch>
         </template>
       </el-table-column>
-      <el-table-column label="创建时间" align="center" prop="createTime" width="180">
+      <el-table-column label="创建时间" align="center" prop="createTime" width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime }}</span>
         </template>
@@ -117,43 +120,44 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="部门编号" prop="orgCode">
-              <el-input v-model="form.orgCode" prefix-icon="el-icon-share" placeholder="请输入部门名称" />
+              <el-input id="orgCode" v-model="form.orgCode" prefix-icon="el-icon-share" placeholder="请输入部门名称" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="部门名称" prop="orgName">
-              <el-input v-model="form.orgName" prefix-icon="el-icon-s-flag" placeholder="请输入部门名称" />
+              <el-input id="orgName" v-model="form.orgName" prefix-icon="el-icon-s-flag" placeholder="请输入部门名称" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="级别" prop="orgType">
-              <el-input-number v-model="form.orgType" :min="1" />
+              <el-input-number id="orgType" v-model="form.orgType" :min="1" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="显示排序" prop="orgOrder">
-              <el-input-number v-model="form.orgOrder" controls-position="right" :min="1" />
+              <el-input-number id="orgOrder" v-model="form.orgOrder" controls-position="right" :min="1" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="负责人" prop="leader">
-              <el-input v-model="form.leader" prefix-icon="el-icon-user" placeholder="请输入负责人" maxlength="20" />
+              <el-input id="leader" v-model="form.leader" prefix-icon="el-icon-user" placeholder="请输入负责人" maxlength="20" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="联系电话" prop="phone">
-              <el-input v-model="form.phone" prefix-icon="el-icon-phone-outline" placeholder="请输入联系电话" maxlength="11" />
+              <el-input id="phone" v-model="form.phone" prefix-icon="el-icon-phone-outline" placeholder="请输入联系电话" maxlength="11" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="邮箱" prop="email">
-              <el-input v-model="form.email" prefix-icon="el-icon-document" placeholder="请输入邮箱" maxlength="50" />
+              <el-input id="email" v-model="form.email" prefix-icon="el-icon-document" placeholder="请输入邮箱" maxlength="50" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="状态">
-              <el-radio-group v-model="form.status">
+              <el-radio-group id="status" v-model="form.status">
                 <el-radio
+                  name="itemCode"
                   v-for="dict in statusOptions"
                   :key="dict.itemCode"
                   :label="dict.itemCode"

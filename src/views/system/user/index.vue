@@ -6,6 +6,7 @@
         <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
           <el-form-item label="用户名称" prop="userName">
             <el-input
+              id="userName"
               v-model="queryParams.userName"
               placeholder="请输入用户名称"
               clearable
@@ -17,6 +18,7 @@
           </el-form-item>
           <el-form-item label="手机号码" prop="phone">
             <el-input
+              id="phone"
               v-model="queryParams.phone"
               placeholder="请输入手机号码"
               clearable
@@ -104,6 +106,7 @@
           <el-table-column label="状态" align="center">
             <template slot-scope="scope">
               <el-switch
+                name="status"
                 v-model="scope.row.status"
                 active-value="YES"
                 inactive-value="NO"
@@ -111,7 +114,7 @@
               ></el-switch>
             </template>
           </el-table-column>
-          <el-table-column label="登录时间" align="center" prop="lastTime" width="180">
+          <el-table-column label="登录时间" align="center" prop="lastTime" width="200">
             <template slot-scope="scope">
               <span>{{ scope.row.lastTime }}</span>
             </template>
@@ -119,7 +122,7 @@
           <el-table-column
             label="操作"
             align="center"
-            width="180"
+            width="200"
             class-name="small-padding fixed-width"
           >
             <template slot-scope="scope">
@@ -162,38 +165,38 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="用户昵称" prop="realName">
-              <el-input v-model="form.realName" prefix-icon="el-icon-s-flag" placeholder="请输入用户昵称" />
+              <el-input id="realName" v-model="form.realName" prefix-icon="el-icon-s-flag" placeholder="请输入用户昵称" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
             <el-form-item v-if="form.id == undefined" label="用户名称" prop="userName">
-              <el-input v-model="form.userName" prefix-icon="el-icon-user-solid" placeholder="请输入用户名称" />
+              <el-input id="userName" v-model="form.userName" prefix-icon="el-icon-user-solid" placeholder="请输入用户名称" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item v-if="form.id == undefined" label="用户密码" prop="password">
-              <el-input v-model="form.password" prefix-icon="el-icon-s-goods" placeholder="请输入用户密码" type="password" />
+              <el-input id="password" v-model="form.password" prefix-icon="el-icon-s-goods" placeholder="请输入用户密码" type="password" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
             <el-form-item label="手机号码" prop="phone">
-              <el-input v-model="form.phone" prefix-icon="el-icon-phone" placeholder="请输入手机号码" maxlength="11" />
+              <el-input id="phone" v-model="form.phone" prefix-icon="el-icon-phone" placeholder="请输入手机号码" maxlength="11" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="邮箱" prop="email">
-              <el-input v-model="form.email" prefix-icon="el-icon-document" placeholder="请输入邮箱" maxlength="50" />
+              <el-input id="email" v-model="form.email" prefix-icon="el-icon-document" placeholder="请输入邮箱" maxlength="50" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
             <el-form-item label="用户性别">
-              <el-select v-model="form.sex" placeholder="请选择">
+              <el-select id="sex" v-model="form.sex" placeholder="请选择">
                 <el-option
                   v-for="dict in genderOptions"
                   :key="dict.itemCode"
@@ -205,7 +208,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="状态">
-              <el-radio-group v-model="form.status">
+              <el-radio-group id="status" v-model="form.status">
                 <el-radio
                   v-for="dict in statusOptions"
                   :key="dict.itemCode"
@@ -218,7 +221,7 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="职位" prop="jobs">
-              <el-select v-model="form.jobs" multiple placeholder="请选择">
+              <el-select id="jobs" v-model="form.jobs" multiple placeholder="请选择">
                 <el-option
                   v-for="item in jobOptions"
                   :key="item.id"
@@ -230,7 +233,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="角色" prop="roles">
-              <el-select v-model="form.roles" multiple placeholder="请选择">
+              <el-select id="roles" v-model="form.roles" multiple placeholder="请选择">
                 <el-option
                   v-for="item in roleOptions"
                   :key="item.id"
@@ -244,7 +247,7 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="管理员">
-              <el-radio-group v-model="form.isAdmin" size="small">
+              <el-radio-group id="isAdmin" v-model="form.isAdmin" size="small">
                 <el-radio-button label="1">是</el-radio-button>
                 <el-radio-button label="0">否</el-radio-button>
               </el-radio-group>
@@ -252,7 +255,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="用户类型">
-              <el-radio-group v-model="form.userType" size="small">
+              <el-radio-group id="userType" v-model="form.userType" size="small">
                 <el-radio-button label="DEFAULT">默认</el-radio-button>
               </el-radio-group>
             </el-form-item>
@@ -271,7 +274,7 @@
         <el-row>
           <el-col :span="24">
             <el-form-item label="备注">
-              <el-input v-model="form.remark" type="textarea" placeholder="请输入内容"></el-input>
+              <el-input id="remark" v-model="form.remark" type="textarea" placeholder="请输入内容"></el-input>
             </el-form-item>
           </el-col>
         </el-row>

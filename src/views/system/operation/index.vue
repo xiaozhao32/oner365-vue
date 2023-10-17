@@ -3,6 +3,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
       <el-form-item label="操作名称" prop="operationName">
         <el-input
+          id="operationName"
           v-model="queryParams.operationName"
           placeholder="请输入操作名称"
           clearable
@@ -12,7 +13,7 @@
         />
       </el-form-item>
       <el-form-item label="状态" prop="status">
-        <el-select v-model="queryParams.status" placeholder="操作状态" clearable size="small">
+        <el-select id="status" v-model="queryParams.status" placeholder="操作状态" clearable size="small">
           <el-option
             v-for="dict in statusOptions"
             :key="dict.itemCode"
@@ -71,6 +72,7 @@
       <el-table-column label="状态" align="center">
         <template slot-scope="scope">
           <el-switch
+            name="status"
             v-model="scope.row.status"
             active-value="YES"
             inactive-value="NO"
@@ -78,12 +80,12 @@
           ></el-switch>
         </template>
       </el-table-column>
-      <el-table-column label="创建时间" align="center" prop="createTime" width="180">
+      <el-table-column label="创建时间" align="center" prop="createTime" width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="180" class-name="small-padding fixed-width">
+      <el-table-column label="操作" width="200" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -113,13 +115,13 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="操作名称" prop="operationName">
-          <el-input v-model="form.operationName" prefix-icon="el-icon-s-flag" placeholder="请输入操作名称" />
+          <el-input id="operationName" v-model="form.operationName" prefix-icon="el-icon-s-flag" placeholder="请输入操作名称" />
         </el-form-item>
         <el-form-item label="操作类型" prop="operationType">
-          <el-input v-model="form.operationType" prefix-icon="el-icon-s-flag" placeholder="请输入操作类型"/>
+          <el-input id="operationType" v-model="form.operationType" prefix-icon="el-icon-s-flag" placeholder="请输入操作类型"/>
         </el-form-item>
         <el-form-item label="操作状态" prop="status">
-          <el-radio-group v-model="form.status">
+          <el-radio-group id="status" v-model="form.status">
             <el-radio
                 v-for="dict in statusOptions"
                 :key="dict.itemCode"

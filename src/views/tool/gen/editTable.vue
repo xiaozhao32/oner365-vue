@@ -15,7 +15,7 @@
           />
           <el-table-column label="字段描述" min-width="10%">
             <template slot-scope="scope">
-              <el-input v-model="scope.row.columnComment"></el-input>
+              <el-input id="columnComment" v-model="scope.row.columnComment"></el-input>
             </template>
           </el-table-column>
           <el-table-column
@@ -26,7 +26,7 @@
           />
           <el-table-column label="Java类型" min-width="11%">
             <template slot-scope="scope">
-              <el-select v-model="scope.row.javaType">
+              <el-select id="javaType" v-model="scope.row.javaType">
                 <el-option label="Long" value="Long" />
                 <el-option label="String" value="String" />
                 <el-option label="Integer" value="Integer" />
@@ -38,7 +38,7 @@
           </el-table-column>
           <el-table-column label="java属性" min-width="10%">
             <template slot-scope="scope">
-              <el-input v-model="scope.row.javaField"></el-input>
+              <el-input id="javaField" v-model="scope.row.javaField"></el-input>
             </template>
           </el-table-column>
 
@@ -64,7 +64,7 @@
           </el-table-column>
           <el-table-column label="查询方式" min-width="10%">
             <template slot-scope="scope">
-              <el-select v-model="scope.row.queryType">
+              <el-select id="queryType" v-model="scope.row.queryType">
                 <el-option label="=" value="EQ" />
                 <el-option label="!=" value="NE" />
                 <el-option label=">" value="GT" />
@@ -83,7 +83,7 @@
           </el-table-column>
           <el-table-column label="显示类型" min-width="12%">
             <template slot-scope="scope">
-              <el-select v-model="scope.row.htmlType">
+              <el-select id="htmlType" v-model="scope.row.htmlType">
                 <el-option label="文本框" value="input" />
                 <el-option label="文本域" value="textarea" />
                 <el-option label="下拉框" value="select" />
@@ -95,7 +95,7 @@
           </el-table-column>
           <el-table-column label="字典类型" min-width="12%">
             <template slot-scope="scope">
-              <el-select v-model="scope.row.dictType" clearable filterable placeholder="请选择">
+              <el-select id="dictType" v-model="scope.row.dictType" clearable filterable placeholder="请选择">
                 <el-option
                   v-for="dict in dictOptions"
                   :key="dict.typeCode"

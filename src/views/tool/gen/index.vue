@@ -3,6 +3,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
       <el-form-item label="表名称" prop="tableName">
         <el-input
+          id="tableName"
           v-model="queryParams.tableName"
           placeholder="请输入表名称"
           clearable
@@ -12,6 +13,7 @@
       </el-form-item>
       <el-form-item label="表描述" prop="tableComment">
         <el-input
+          id="tableComment"
           v-model="queryParams.tableComment"
           placeholder="请输入表描述"
           clearable
@@ -102,7 +104,7 @@
         :show-overflow-tooltip="true"
         width="130"
       />
-      <el-table-column label="创建时间" align="center" prop="createTime" width="180" />
+      <el-table-column label="创建时间" align="center" prop="createTime" width="200" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button

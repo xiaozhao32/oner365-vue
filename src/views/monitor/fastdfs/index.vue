@@ -3,6 +3,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
       <el-form-item label="文件目录" prop="fileDirectory">
         <el-input
+          id="fileDirectory"
           v-model="queryParams.displayName"
           placeholder="请输入文件名称"
           clearable
@@ -12,7 +13,7 @@
         />
       </el-form-item>
       <el-form-item label="存储类型" prop="fileStorage">
-        <el-select v-model="queryParams.fileStorage" placeholder="请选择存储类型" clearable size="small">
+        <el-select id="fileStorage" v-model="queryParams.fileStorage" placeholder="请选择存储类型" clearable size="small">
           <el-option key="LOCAL" value="LOCAL" label="本地存储(LOCAL)" />
           <el-option key="MINIO" value="MINIO" label="分布式存储(MINIO)" />
           <el-option key="FDFS" value="FDFS" label="分布式存储(FDFS)" />
@@ -53,8 +54,8 @@
           <el-tag type="danger">{{ scope.row.size }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="时间" align="center" prop="createTime" width="180" />
-      <el-table-column label="操作" align="center" width="180" class-name="small-padding fixed-width">
+      <el-table-column label="时间" align="center" prop="createTime" width="200" />
+      <el-table-column label="操作" align="center" width="200" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-view" @click="handlePreview(scope.row)">查看</el-button>
           <el-button size="mini" type="text" icon="el-icon-share" v-if="scope.row.directory === false" @click="handleDownload(scope.row)">下载</el-button>

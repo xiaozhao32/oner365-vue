@@ -3,6 +3,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
       <el-form-item label="任务名称" prop="taskName">
         <el-input
+          id="taskName"
           v-model="queryParams.taskName"
           placeholder="请输入任务名称"
           clearable
@@ -12,7 +13,7 @@
         />
       </el-form-item>
       <el-form-item label="任务组名" prop="taskGroup">
-        <el-select v-model="queryParams.taskGroup" placeholder="请选择任务组名" clearable size="small">
+        <el-select id="taskGroup" v-model="queryParams.taskGroup" placeholder="请选择任务组名" clearable size="small">
           <el-option
             v-for="dict in taskGroupOptions"
             :key="dict.itemCode"
@@ -85,6 +86,7 @@
       <el-table-column label="状态" align="center">
         <template slot-scope="scope">
           <el-switch
+            name="status"
             v-model="scope.row.status"
             active-value="NORMAL"
             inactive-value="PAUSE"
@@ -92,7 +94,7 @@
           ></el-switch>
         </template>
       </el-table-column>
-      <el-table-column label="创建时间" align="center" prop="createTime" width="180">
+      <el-table-column label="创建时间" align="center" prop="createTime" width="200">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
         </template>
@@ -129,12 +131,12 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="任务名称" prop="taskName">
-              <el-input v-model="form.taskName" prefix-icon="el-icon-s-flag" placeholder="请输入任务名称" />
+              <el-input id="taskName" v-model="form.taskName" prefix-icon="el-icon-s-flag" placeholder="请输入任务名称" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="任务分组" prop="taskGroup">
-              <el-select v-model="form.taskGroup" placeholder="请选择">
+              <el-select id="taskGroup" v-model="form.taskGroup" placeholder="请选择">
                 <el-option
                   v-for="dict in taskGroupOptions"
                   :key="dict.itemCode"
@@ -157,17 +159,17 @@
                   <i class="el-icon-question"></i>
                 </el-tooltip>
               </span>
-              <el-input v-model="form.invokeTarget" prefix-icon="el-icon-share" placeholder="请输入调用目标字符串" />
+              <el-input id="invokeTarget" v-model="form.invokeTarget" prefix-icon="el-icon-share" placeholder="请输入调用目标字符串" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="cron表达式" prop="cronExpression">
-              <el-input v-model="form.cronExpression" prefix-icon="el-icon-s-operation" placeholder="请输入cron执行表达式" />
+              <el-input id="cronExpression" v-model="form.cronExpression" prefix-icon="el-icon-s-operation" placeholder="请输入cron执行表达式" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="是否并发" prop="concurrent">
-              <el-radio-group v-model="form.concurrent" size="small">
+              <el-radio-group id="concurrent" v-model="form.concurrent" size="small">
                 <el-radio-button label="0">允许</el-radio-button>
                 <el-radio-button label="1">禁止</el-radio-button>
               </el-radio-group>
@@ -175,7 +177,7 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="执行策略" prop="misfirePolicy">
-              <el-radio-group v-model="form.misfirePolicy" size="small">
+              <el-radio-group id="misfirePolicy" v-model="form.misfirePolicy" size="small">
                 <el-radio-button label="IGNORE">立即执行</el-radio-button>
                 <el-radio-button label="ONCE">执行一次</el-radio-button>
                 <el-radio-button label="NONE">放弃执行</el-radio-button>
@@ -184,7 +186,7 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="状态">
-              <el-radio-group v-model="form.status">
+              <el-radio-group id="status" v-model="form.status">
                 <el-radio
                   v-for="dict in statusOptions"
                   :key="dict.itemCode"

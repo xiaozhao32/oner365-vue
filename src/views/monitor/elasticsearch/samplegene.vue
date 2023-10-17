@@ -3,6 +3,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
       <el-form-item label="主键" prop="id">
         <el-input
+          id="id"
           v-model="queryParams.id"
           placeholder="请输入主键"
           clearable
@@ -13,6 +14,7 @@
       </el-form-item>
       <el-form-item label="实验室编号" prop="initServerNo" :inline="true" label-width="98px">
         <el-input
+          id="initServerNo"
           v-model="queryParams.initServerNo"
           placeholder="请输入实验室编号"
           clearable
@@ -23,6 +25,7 @@
       </el-form-item>
       <el-form-item label="人员编号" prop="personCode" :inline="true" label-width="98px">
         <el-input
+          id="personCode"
           v-model="queryParams.personCode"
           placeholder="请输入人员编号"
           clearable
@@ -68,12 +71,12 @@
     
     <el-table v-loading="loading" :data="dataList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="50" align="center" prop="id" />
-      <el-table-column label="主键" align="center" prop="id" width="180" />
+      <el-table-column label="主键" align="center" prop="id" width="200" />
       <el-table-column label="实验室编号" align="center" prop="initServerNo" width="98" />
       <el-table-column label="人员编号" align="center" prop="personCode" width="80" />
-      <el-table-column label="基因类型" align="center" prop="geneType" width="180">
+      <el-table-column label="基因类型" align="center" prop="geneType" width="200">
       	<template slot-scope="scope">
-          <el-radio-group v-model="scope.row.geneType" size="small">
+          <el-radio-group id="geneType" v-model="scope.row.geneType" size="small">
 	        <el-radio-button label="X">X</el-radio-button>
 	        <el-radio-button label="Y">Y</el-radio-button>
 	      </el-radio-group>
@@ -84,7 +87,7 @@
           {{ scope.row.geneInfo }}
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="180" class-name="small-padding fixed-width">
+      <el-table-column label="操作" width="200" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -113,18 +116,18 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="98px">
         <el-form-item label="主键" prop="id">
-          <el-input v-model="form.id" prefix-icon="el-icon-s-flag" placeholder="请输入主键" />
+          <el-input id="id" v-model="form.id" prefix-icon="el-icon-s-flag" placeholder="请输入主键" />
         </el-form-item>
         <el-form-item label="实验室编号" prop="initServerNo">
-          <el-input v-model="form.initServerNo" prefix-icon="el-icon-user-solid" placeholder="请输入实验室编号" />
+          <el-input id="initServerNo" v-model="form.initServerNo" prefix-icon="el-icon-user-solid" placeholder="请输入实验室编号" />
         </el-form-item>
         <el-form-item label="人员编号" prop="personCode">
-          <el-input v-model="form.personCode" prefix-icon="el-icon-s-goods" placeholder="请输入人员编号" />
+          <el-input id="personCode" v-model="form.personCode" prefix-icon="el-icon-s-goods" placeholder="请输入人员编号" />
         </el-form-item>
         <el-row>
           <el-col :span="12">
             <el-form-item label="基因类型">
-              <el-radio-group v-model="form.geneType" size="small">
+              <el-radio-group id="geneType" v-model="form.geneType" size="small">
                 <el-radio-button label="X">X</el-radio-button>
                 <el-radio-button label="Y">Y</el-radio-button>
               </el-radio-group>
@@ -134,14 +137,14 @@
         <el-form-item label="内容"> 
           <el-button type="primary" size="mini" @click="handleInsertGene">添加基因型</el-button>
           <el-table :data="form.geneList">
-            <el-table-column prop="name" label="键" width="180">
+            <el-table-column prop="name" label="键" width="200">
               <template slot-scope="scope">
-                <el-input v-model="scope.row.name" />
+                <el-input id="name" v-model="scope.row.name" />
               </template>
             </el-table-column> 
             <el-table-column prop="value" label="值">
               <template slot-scope="scope">
-                <el-input v-model="scope.row.value" />
+                <el-input id="value" v-model="scope.row.value" />
               </template>
             </el-table-column>
             <el-table-column label="操作" class-name="small-padding fixed-width">

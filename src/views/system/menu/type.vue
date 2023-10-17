@@ -3,6 +3,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
       <el-form-item label="类型标识" prop="typeCode">
         <el-input
+          id="typeCode"
           v-model="queryParams.typeCode"
           placeholder="请输入类型标识"
           clearable
@@ -13,6 +14,7 @@
       </el-form-item>
       <el-form-item label="类型名称" prop="typeName">
         <el-input
+          id="typeName"
           v-model="queryParams.typeName"
           placeholder="请输入类型名称"
           clearable
@@ -23,6 +25,7 @@
       </el-form-item>
       <el-form-item label="状态" prop="status">
         <el-select
+          id="status"
           v-model="queryParams.status"
           placeholder="字典状态"
           clearable
@@ -78,6 +81,7 @@
       <el-table-column label="状态" align="center" width="120">
         <template slot-scope="scope">
           <el-switch
+            name="status"
             v-model="scope.row.status"
             active-value="YES"
             inactive-value="NO"
@@ -115,13 +119,13 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
       	<el-form-item label="菜单类型标识" prop="typeCode">
-          <el-input v-model="form.typeCode" prefix-icon="el-icon-share" placeholder="请输入菜单类型标识" />
+          <el-input id="typeCode" v-model="form.typeCode" prefix-icon="el-icon-share" placeholder="请输入菜单类型标识" />
         </el-form-item>
         <el-form-item label="菜单类型名称" prop="typeName">
-          <el-input v-model="form.typeName" prefix-icon="el-icon-s-flag" placeholder="请输入菜单类型名称" />
+          <el-input id="typeName" v-model="form.typeName" prefix-icon="el-icon-s-flag" placeholder="请输入菜单类型名称" />
         </el-form-item>
         <el-form-item label="状态" prop="status">
-          <el-radio-group v-model="form.status">
+          <el-radio-group id="status" v-model="form.status">
             <el-radio
               v-for="dict in statusOptions"
               :key="dict.itemCode"

@@ -3,12 +3,13 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
       <h3 class="title">权限管理系统</h3>
       <el-form-item prop="userName">
-        <el-input v-model="loginForm.userName" type="text" auto-complete="off" placeholder="账号">
+        <el-input id="userName" v-model="loginForm.userName" type="text" auto-complete="off" placeholder="账号">
           <svg-icon slot="prefix" icon-class="user" class="el-input__icon input-icon" />
         </el-input>
       </el-form-item>
       <el-form-item prop="password">
         <el-input
+          id="password"
           v-model="loginForm.password"
           type="password"
           auto-complete="off"
@@ -20,6 +21,7 @@
       </el-form-item>
       <el-form-item prop="code">
         <el-input
+          id="code"
           v-model="loginForm.code"
           auto-complete="off"
           placeholder="验证码"
@@ -32,7 +34,7 @@
           <img :src="codeUrl" @click="getCode" />
         </div>
       </el-form-item>
-      <el-checkbox v-model="loginForm.rememberMe" style="margin:0px 0px 25px 0px;">记住密码</el-checkbox>
+      <el-checkbox id="rememberMe" v-model="loginForm.rememberMe" style="margin:0px 0px 25px 0px;">记住密码</el-checkbox>
       <el-form-item style="width:100%;">
         <el-button
           :loading="loading"

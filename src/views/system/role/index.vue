@@ -3,6 +3,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true">
       <el-form-item label="角色名称" prop="roleName">
         <el-input
+          id="roleName"
           v-model="queryParams.roleName"
           placeholder="请输入角色名称"
           clearable
@@ -13,6 +14,7 @@
       </el-form-item>
       <el-form-item label="状态" prop="status">
         <el-select
+          id="status"
           v-model="queryParams.status"
           placeholder="角色状态"
           clearable
@@ -27,8 +29,9 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="创建时间">
+      <el-form-item label="创建时间" id="dateRange">
         <el-date-picker
+          id="daterange"
           v-model="dateRange"
           size="small"
           style="width: 240px"
@@ -84,12 +87,13 @@
 
     <el-table v-loading="loading" :data="roleList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" prop="id" />
-      <el-table-column label="角色编号" prop="roleCode" width="180" />
-      <el-table-column label="角色名称" prop="roleName" :show-overflow-tooltip="true" width="180" />
+      <el-table-column label="角色编号" prop="roleCode" width="200" />
+      <el-table-column label="角色名称" prop="roleName" :show-overflow-tooltip="true" width="200" />
       <el-table-column label="角色描述" prop="roleDes" :show-overflow-tooltip="true" />
       <el-table-column label="状态" align="center" width="100">
         <template slot-scope="scope">
           <el-switch
+            name="status"
             v-model="scope.row.status"
             active-value="YES"
             inactive-value="NO"
@@ -97,7 +101,7 @@
           ></el-switch>
         </template>
       </el-table-column>
-      <el-table-column label="创建时间" align="center" prop="createTime" width="180">
+      <el-table-column label="创建时间" align="center" prop="createTime" width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime }}</span>
         </template>
@@ -132,14 +136,15 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="角色编号" prop="roleCode">
-          <el-input v-model="form.roleCode" prefix-icon="el-icon-share" placeholder="请输入角色编号" />
+          <el-input id="roleCode" v-model="form.roleCode" prefix-icon="el-icon-share" placeholder="请输入角色编号" />
         </el-form-item>
         <el-form-item label="角色名称" prop="roleName">
-          <el-input v-model="form.roleName" prefix-icon="el-icon-s-flag" placeholder="请输入角色名称" />
+          <el-input id="roleName" v-model="form.roleName" prefix-icon="el-icon-s-flag" placeholder="请输入角色名称" />
         </el-form-item>
-        <el-form-item label="状态">
-          <el-radio-group v-model="form.status">
+        <el-form-item label="状态" prop="status">
+          <el-radio-group id="status" v-model="form.status">
             <el-radio
+              name="itemCode"
               v-for="dict in statusOptions"
               :key="dict.itemCode"
               :label="dict.itemCode"
@@ -148,6 +153,7 @@
         </el-form-item>
         <el-form-item label="系统菜单">
           <el-select
+            id="menuType"
             v-model="form.menuType"
             placeholder="请选择系统菜单"
             size="small"
@@ -164,6 +170,7 @@
         </el-form-item>
         <el-form-item label="菜单权限">
           <el-tree
+            id="menuId"
             :data="menuOptions"
             show-checkbox
             ref="menu"
@@ -172,8 +179,8 @@
             :props="defaultProps"
           ></el-tree>
         </el-form-item>
-        <el-form-item label="备注">
-          <el-input v-model="form.roleDes" type="textarea" placeholder="请输入内容"></el-input>
+        <el-form-item label="备注" prop="roleDes">
+          <el-input id="roleDes" v-model="form.roleDes" type="textarea" placeholder="请输入内容"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

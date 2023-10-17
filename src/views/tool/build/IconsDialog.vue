@@ -11,6 +11,7 @@
       <div slot="title">
         选择图标
         <el-input
+          id="key"
           v-model="key"
           size="mini"
           :style="{width: '260px'}"

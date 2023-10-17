@@ -3,6 +3,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
       <el-form-item label="任务名称" prop="taskName">
         <el-input
+          id="taskName"
           v-model="queryParams.taskName"
           placeholder="请输入任务名称"
           clearable
@@ -14,6 +15,7 @@
       </el-form-item>
       <el-form-item label="任务组名" prop="taskGroup">
         <el-select
+          id="taskGroup"
           v-model="queryParams.taskGroup"
           placeholder="请任务组名"
           clearable
@@ -83,6 +85,7 @@
       <el-table-column label="状态" align="center">
         <template slot-scope="scope">
           <el-switch
+            name="status"
             v-model="scope.row.status"
             active-value="NORMAL"
             inactive-value="PAUSE"
@@ -90,7 +93,7 @@
           ></el-switch>
         </template>
       </el-table-column>
-      <el-table-column label="执行时间" align="center" prop="createTime" width="180">
+      <el-table-column label="执行时间" align="center" prop="createTime" width="200">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
         </template>

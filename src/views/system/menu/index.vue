@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-form :inline="true">
       <el-form-item label="菜单类型">
-        <el-select v-model="queryParams.menuTypeId" placeholder="菜单类型" size="small" @change="changeMenuType">
+        <el-select id="menuTypeId" v-model="queryParams.menuTypeId" placeholder="菜单类型" size="small" @change="changeMenuType">
           <el-option
             v-for="type in menuTypeOptions"
             :key="type.id"
@@ -13,6 +13,7 @@
       </el-form-item>
       <el-form-item label="菜单名称">
         <el-input
+          id="menuName"
           v-model="queryParams.menuName"
           placeholder="请输入菜单名称"
           clearable
@@ -21,7 +22,7 @@
         />
       </el-form-item>
       <el-form-item label="状态">
-        <el-select v-model="queryParams.status" placeholder="菜单状态" clearable size="small">
+        <el-select id="status" v-model="queryParams.status" placeholder="菜单状态" clearable size="small">
           <el-option
             v-for="dict in statusOptions"
             :key="dict.itemCode"
@@ -47,7 +48,7 @@
       row-key="id"
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
     >
-      <el-table-column prop="menuName" label="菜单名称" :show-overflow-tooltip="true" width="180" />
+      <el-table-column prop="menuName" label="菜单名称" :show-overflow-tooltip="true" width="200" />
       <el-table-column prop="id" label="编号" width="100" />
       <el-table-column prop="icon" label="图标" align="center" width="100">
         <template slot-scope="scope">
@@ -60,6 +61,7 @@
       <el-table-column label="状态" align="center" width="100">
         <template slot-scope="scope">
           <el-switch
+            name="status"
             v-model="scope.row.status"
             active-value="YES"
             inactive-value="NO"
@@ -67,7 +69,7 @@
           ></el-switch>
         </template>
       </el-table-column>
-      <el-table-column label="创建时间" align="center" prop="createTime" width="180">
+      <el-table-column label="创建时间" align="center" prop="createTime" width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime }}</span>
         </template>
@@ -115,7 +117,7 @@
         <el-row>
           <el-col :span="24">
             <el-form-item label="主键编号" prop="id">
-              <el-input v-model="form.id" placeholder="请输入主键编号" />
+              <el-input id="id" v-model="form.id" placeholder="请输入主键编号" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -146,31 +148,31 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="菜单名称" prop="menuName">
-              <el-input v-model="form.menuName" placeholder="请输入菜单名称" />
+              <el-input id="menuName" v-model="form.menuName" placeholder="请输入菜单名称" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="显示排序" prop="menuOrder">
-              <el-input-number v-model="form.menuOrder" controls-position="right" :min="0" />
+              <el-input-number id="menuOrder" v-model="form.menuOrder" controls-position="right" :min="0" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
             <el-form-item label="前端路径" prop="path">
-              <el-input v-model="form.path" placeholder="请输入前端路径" />
+              <el-input id="path" v-model="form.path" placeholder="请输入前端路径" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="后端路径" prop="component">
-              <el-input v-model="form.component" placeholder="请输入后端路径" />
+              <el-input id="component" v-model="form.component" placeholder="请输入后端路径" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
             <el-form-item label="菜单状态">
-              <el-radio-group v-model="form.status">
+              <el-radio-group id="status" v-model="form.status">
                 <el-radio
                   v-for="dict in statusOptions"
                   :key="dict.itemCode"
@@ -183,7 +185,7 @@
         <el-row>
           <el-col :span="24">
             <el-form-item label="备注" prop="menuDescription">
-              <el-input v-model="form.menuDescription" type="textarea" placeholder="请输入描述"></el-input>
+              <el-input id="menuDescription" v-model="form.menuDescription" type="textarea" placeholder="请输入描述"></el-input>
             </el-form-item>
           </el-col>
         </el-row>

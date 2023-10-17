@@ -4,6 +4,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true">
       <el-form-item label="表名称" prop="tableName">
         <el-input
+          id="tableName"
           v-model="queryParams.tableName"
           placeholder="请输入表名称"
           clearable
@@ -13,6 +14,7 @@
       </el-form-item>
       <el-form-item label="表描述" prop="tableComment">
         <el-input
+          id="tableComment"
           v-model="queryParams.tableComment"
           placeholder="请输入表描述"
           clearable

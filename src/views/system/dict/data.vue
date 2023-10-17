@@ -3,6 +3,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true">
       <el-form-item label="字典名称" prop="itemName">
         <el-input
+          id="itemName"
           v-model="queryParams.itemName"
           placeholder="请输入字典名称"
           clearable
@@ -13,6 +14,7 @@
       </el-form-item>
       <el-form-item label="字典编码" prop="itemCode">
         <el-input
+          id="itemCode"
           v-model="queryParams.itemCode"
           placeholder="请输入字典编码"
           clearable
@@ -22,7 +24,7 @@
         />
       </el-form-item>
       <el-form-item label="状态" prop="status">
-        <el-select v-model="queryParams.status" placeholder="数据状态" clearable size="small">
+        <el-select id="status" v-model="queryParams.status" placeholder="数据状态" clearable size="small">
           <el-option
             v-for="dict in statusOptions"
             :key="dict.itemCode"
@@ -83,6 +85,7 @@
       <el-table-column label="状态" align="center">
         <template slot-scope="scope">
           <el-switch
+            name="status"
             v-model="scope.row.status"
             active-value="YES"
             inactive-value="NO"
@@ -120,19 +123,19 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="字典类型" prop="typeId">
-          <el-input v-model="form.typeId" :disabled="true" />
+          <el-input id="typeId" v-model="form.typeId" :disabled="true" />
         </el-form-item>
         <el-form-item label="字典名称" prop="itemName">
-          <el-input v-model="form.itemName" prefix-icon="el-icon-s-flag" placeholder="请输入字典名称" />
+          <el-input id="itemName" v-model="form.itemName" prefix-icon="el-icon-s-flag" placeholder="请输入字典名称" />
         </el-form-item>
         <el-form-item label="字典编码" prop="itemCode">
-          <el-input v-model="form.itemCode" prefix-icon="el-icon-share" placeholder="请输入字典编码" />
+          <el-input id="itemCode" v-model="form.itemCode" prefix-icon="el-icon-share" placeholder="请输入字典编码" />
         </el-form-item>
         <el-form-item label="显示排序" prop="itemOrder">
-          <el-input-number v-model="form.itemOrder" controls-position="right" :min="1" />
+          <el-input-number id="itemOrder" v-model="form.itemOrder" controls-position="right" :min="1" />
         </el-form-item>
         <el-form-item label="状态" prop="status">
-          <el-radio-group v-model="form.status">
+          <el-radio-group id="status" v-model="form.status">
             <el-radio
               v-for="dict in statusOptions"
               :key="dict.itemCode"
@@ -141,7 +144,7 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="备注" prop="remark">
-          <el-input v-model="form.remark" type="textarea" placeholder="请输入内容"></el-input>
+          <el-input id="remark" v-model="form.remark" type="textarea" placeholder="请输入内容"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

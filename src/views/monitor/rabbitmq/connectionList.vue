@@ -3,6 +3,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="90px">
       <el-form-item label="名称" prop="name">
         <el-input
+          id="name"
           v-model="queryParams.name"
           placeholder="请输入名称"
           clearable
@@ -27,7 +28,7 @@
           <el-tag type="success">{{ scope.row.state }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="Channel" align="center" prop="channels" width="180" />
+      <el-table-column label="Channel" align="center" prop="channels" width="200" />
       <el-table-column label="操作" width="80" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button

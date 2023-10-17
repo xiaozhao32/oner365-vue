@@ -3,6 +3,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
       <el-form-item label="路由名称" prop="id">
         <el-input
+          id="id"
           v-model="queryParams.id"
           placeholder="请输入路由名称"
           clearable
@@ -12,7 +13,7 @@
         />
       </el-form-item>
       <el-form-item label="状态" prop="status">
-        <el-select v-model="queryParams.status" placeholder="路由状态" clearable size="small">
+        <el-select id="status" v-model="queryParams.status" placeholder="路由状态" clearable size="small">
           <el-option
             v-for="dict in statusOptions"
             :key="dict.itemCode"
@@ -77,6 +78,7 @@
       <el-table-column label="状态" align="center">
         <template slot-scope="scope">
           <el-switch
+            name="status"
             v-model="scope.row.status"
             active-value="YES"
             inactive-value="NO"
@@ -84,7 +86,7 @@
           ></el-switch>
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="180" class-name="small-padding fixed-width">
+      <el-table-column label="操作" width="200" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -124,7 +126,7 @@
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
-          <el-input v-model="form.id" prefix-icon="el-icon-s-flag" placeholder="请输入路由名称" />
+          <el-input id="id" v-model="form.id" prefix-icon="el-icon-s-flag" placeholder="请输入路由名称" />
         </el-form-item>
         <el-form-item label="路由规则" prop="pattern">
           <span slot="label">
@@ -137,7 +139,7 @@
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
-          <el-input v-model="form.pattern" prefix-icon="el-icon-share" placeholder="请输入路由规则" />
+          <el-input id="pattern" v-model="form.pattern" prefix-icon="el-icon-share" placeholder="请输入路由规则" />
         </el-form-item>
         <el-form-item label="请求地址" prop="uri">
           <span slot="label">
@@ -150,13 +152,13 @@
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
-          <el-input v-model="form.uri" type="textarea" placeholder="请输入请求地址" />
+          <el-input id="uri" v-model="form.uri" type="textarea" placeholder="请输入请求地址" />
         </el-form-item>
         <el-form-item label="路由顺序" prop="routeOrder">
-          <el-input-number v-model="form.routeOrder" controls-position="right" :min="1" />
+          <el-input-number id="routeOrder" v-model="form.routeOrder" controls-position="right" :min="1" />
         </el-form-item>
         <el-form-item label="路由状态" prop="status">
-          <el-radio-group v-model="form.status">
+          <el-radio-group id="status" v-model="form.status">
             <el-radio
                 v-for="dict in statusOptions"
                 :key="dict.itemCode"

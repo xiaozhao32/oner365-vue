@@ -3,6 +3,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
       <el-form-item label="请求IP" prop="operationIp">
         <el-input
+          id="operationIp"
           v-model="queryParams.operationIp"
           placeholder="请输入请求IP"
           clearable
@@ -12,6 +13,7 @@
       </el-form-item>
       <el-form-item label="服务名称" prop="operationName">
         <el-input
+          id="operationName"
           v-model="queryParams.operationName"
           placeholder="请输入服务名称"
           clearable
@@ -21,6 +23,7 @@
       </el-form-item>
       <el-form-item label="请求方法" prop="methodName">
         <el-select
+          id="methodName"
           v-model="queryParams.methodName"
           placeholder="请求方法"
           clearable
@@ -87,12 +90,12 @@
         </template>
       </el-table-column>
       <el-table-column label="请求地址" prop="operationPath" />
-      <el-table-column label="创建时间" align="center" prop="createTime" width="180">
+      <el-table-column label="创建时间" align="center" prop="createTime" width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="180" class-name="small-padding fixed-width">
+      <el-table-column label="操作" width="200" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -122,19 +125,19 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="请求IP" prop="operationIp">
-          <el-input v-model="form.operationIp" placeholder="请输入请求IP" />
+          <el-input id="operationIp" v-model="form.operationIp" placeholder="请输入请求IP" />
         </el-form-item>
         <el-form-item label="服务名称" prop="operationName">
-          <el-input v-model="form.operationName" placeholder="请输入服务名称" />
+          <el-input id="operationName" v-model="form.operationName" placeholder="请输入服务名称" />
         </el-form-item>
         <el-form-item label="请求方法" prop="methodName">
-          <el-input v-model="form.methodName" placeholder="请输入请求方法" />
+          <el-input id="methodName" v-model="form.methodName" placeholder="请输入请求方法" />
         </el-form-item>
         <el-form-item label="请求地址" prop="operationPath">
-          <el-input v-model="form.operationPath" placeholder="请输入请求地址" />
+          <el-input id="operationPath" v-model="form.operationPath" placeholder="请输入请求地址" />
         </el-form-item>
         <el-form-item label="请求内容" prop="operationContext">
-          <el-input v-model="form.operationContext" type="textarea" placeholder="请输入内容" />
+          <el-input id="operationContext" v-model="form.operationContext" type="textarea" placeholder="请输入内容" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

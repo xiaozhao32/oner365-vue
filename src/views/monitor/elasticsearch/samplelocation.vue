@@ -3,6 +3,7 @@
     <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
       <el-form-item label="坐标名称" prop="locationName" :inline="true" label-width="98px">
         <el-input
+          id="locationName"
           v-model="queryParams.locationName"
           placeholder="请输入坐标名称"
           clearable
@@ -48,15 +49,15 @@
     
     <el-table v-loading="loading" :data="dataList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="50" align="center" prop="id" />
-      <el-table-column label="坐标名称" align="center" prop="locationName" width="180" />
+      <el-table-column label="坐标名称" align="center" prop="locationName" width="200" />
       <el-table-column label="坐标信息" align="center" prop="locationPoint" :show-overflow-tooltip="false">
         <template slot-scope="scope">
           {{ scope.row.locationPoint }}
         </template>
       </el-table-column>
       <el-table-column label="坐标描述" align="center" prop="locationDesc" width="280" />
-      <el-table-column label="创建时间" align="center" prop="createTime" width="180" />
-      <el-table-column label="操作" width="180" class-name="small-padding fixed-width">
+      <el-table-column label="创建时间" align="center" prop="createTime" width="200" />
+      <el-table-column label="操作" width="200" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -85,16 +86,16 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="98px">
         <el-form-item label="坐标名称" prop="locationName">
-          <el-input v-model="form.locationName" prefix-icon="el-icon-user-solid" placeholder="请输入坐标名称" />
+          <el-input id="locationName" v-model="form.locationName" prefix-icon="el-icon-user-solid" placeholder="请输入坐标名称" />
         </el-form-item>
         <el-form-item label="坐标经度" prop="locationPoint.lon">
-          <el-input v-model="form.locationPoint.lon" prefix-icon="el-icon-user-solid" placeholder="请输入坐标经度" />
+          <el-input id="lon" v-model="form.locationPoint.lon" prefix-icon="el-icon-user-solid" placeholder="请输入坐标经度" />
         </el-form-item>
         <el-form-item label="坐标纬度" prop="locationPoint.lat">
-          <el-input v-model="form.locationPoint.lat" prefix-icon="el-icon-user-solid" placeholder="请输入坐标纬度" />
+          <el-input id="lat" v-model="form.locationPoint.lat" prefix-icon="el-icon-user-solid" placeholder="请输入坐标纬度" />
         </el-form-item>
         <el-form-item label="坐标描述" prop="locationDesc">
-          <el-input v-model="form.locationDesc" type="textarea" placeholder="请输入坐标描述"></el-input>
+          <el-input id="locationDesc" v-model="form.locationDesc" type="textarea" placeholder="请输入坐标描述"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
