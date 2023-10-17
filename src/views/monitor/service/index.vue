@@ -25,12 +25,12 @@
       <el-table-column type="selection" width="55" align="center" prop="id" />
       <el-table-column label="服务名称" prop="[0].serviceId" />
       <el-table-column label="服务器 ip" prop="[0].host" align="center" width="150" />
-      <el-table-column label="端口" align="center" width="70">
+      <el-table-column label="端口" align="center" width="100">
       	<template slot-scope="scope">
           <el-tag type="danger">{{ scope.row[0].port }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="类型" align="center" width="70">
+      <el-table-column label="类型" align="center" width="100">
       	<template slot-scope="scope">
           <el-tag v-if="scope.row[0].scheme == null">默认</el-tag>
           <el-tag v-else-if="scope.row[0].scheme != null">{{ scope.row[0].scheme }}</el-tag>

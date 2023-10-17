@@ -76,9 +76,9 @@
       <el-table-column label="人员编号" align="center" prop="personCode" width="80" />
       <el-table-column label="基因类型" align="center" prop="geneType" width="200">
       	<template slot-scope="scope">
-          <el-radio-group id="geneType" v-model="scope.row.geneType" size="small">
-	        <el-radio-button label="X">X</el-radio-button>
-	        <el-radio-button label="Y">Y</el-radio-button>
+          <el-radio-group name="geneType" v-model="scope.row.geneType" size="small">
+	        <el-radio-button name="X" label="X">X</el-radio-button>
+	        <el-radio-button name="Y" label="Y">Y</el-radio-button>
 	      </el-radio-group>
         </template>
       </el-table-column>
@@ -127,7 +127,7 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="基因类型">
-              <el-radio-group id="geneType" v-model="form.geneType" size="small">
+              <el-radio-group name="geneType" v-model="form.geneType" size="small">
                 <el-radio-button label="X">X</el-radio-button>
                 <el-radio-button label="Y">Y</el-radio-button>
               </el-radio-group>
@@ -139,12 +139,12 @@
           <el-table :data="form.geneList">
             <el-table-column prop="name" label="键" width="200">
               <template slot-scope="scope">
-                <el-input id="name" v-model="scope.row.name" />
+                <el-input name="name" v-model="scope.row.name" />
               </template>
             </el-table-column> 
             <el-table-column prop="value" label="值">
               <template slot-scope="scope">
-                <el-input id="value" v-model="scope.row.value" />
+                <el-input name="value" v-model="scope.row.value" />
               </template>
             </el-table-column>
             <el-table-column label="操作" class-name="small-padding fixed-width">

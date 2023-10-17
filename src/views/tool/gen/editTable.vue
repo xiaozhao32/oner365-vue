@@ -15,7 +15,7 @@
           />
           <el-table-column label="字段描述" min-width="10%">
             <template slot-scope="scope">
-              <el-input id="columnComment" v-model="scope.row.columnComment"></el-input>
+              <el-input name="columnComment" v-model="scope.row.columnComment"></el-input>
             </template>
           </el-table-column>
           <el-table-column
@@ -26,7 +26,7 @@
           />
           <el-table-column label="Java类型" min-width="11%">
             <template slot-scope="scope">
-              <el-select id="javaType" v-model="scope.row.javaType">
+              <el-select name="javaType" v-model="scope.row.javaType">
                 <el-option label="Long" value="Long" />
                 <el-option label="String" value="String" />
                 <el-option label="Integer" value="Integer" />
@@ -38,33 +38,33 @@
           </el-table-column>
           <el-table-column label="java属性" min-width="10%">
             <template slot-scope="scope">
-              <el-input id="javaField" v-model="scope.row.javaField"></el-input>
+              <el-input name="javaField" v-model="scope.row.javaField"></el-input>
             </template>
           </el-table-column>
 
           <el-table-column label="插入" min-width="5%">
             <template slot-scope="scope">
-              <el-checkbox true-label="1" v-model="scope.row.isInsert"></el-checkbox>
+              <el-checkbox name="isInsert" true-label="1" v-model="scope.row.isInsert"></el-checkbox>
             </template>
           </el-table-column>
           <el-table-column label="编辑" min-width="5%">
             <template slot-scope="scope">
-              <el-checkbox true-label="1" v-model="scope.row.isEdit"></el-checkbox>
+              <el-checkbox name="isEdit" true-label="1" v-model="scope.row.isEdit"></el-checkbox>
             </template>
           </el-table-column>
           <el-table-column label="列表" min-width="5%">
             <template slot-scope="scope">
-              <el-checkbox true-label="1" v-model="scope.row.isList"></el-checkbox>
+              <el-checkbox name="isList" true-label="1" v-model="scope.row.isList"></el-checkbox>
             </template>
           </el-table-column>
           <el-table-column label="查询" min-width="5%">
             <template slot-scope="scope">
-              <el-checkbox true-label="1" v-model="scope.row.isQuery"></el-checkbox>
+              <el-checkbox name="isQuery" true-label="1" v-model="scope.row.isQuery"></el-checkbox>
             </template>
           </el-table-column>
           <el-table-column label="查询方式" min-width="10%">
             <template slot-scope="scope">
-              <el-select id="queryType" v-model="scope.row.queryType">
+              <el-select name="queryType" v-model="scope.row.queryType">
                 <el-option label="=" value="EQ" />
                 <el-option label="!=" value="NE" />
                 <el-option label=">" value="GT" />
@@ -78,12 +78,12 @@
           </el-table-column>
           <el-table-column label="必填" min-width="5%">
             <template slot-scope="scope">
-              <el-checkbox true-label="1" v-model="scope.row.isRequired"></el-checkbox>
+              <el-checkbox name="isRequired" true-label="1" v-model="scope.row.isRequired"></el-checkbox>
             </template>
           </el-table-column>
           <el-table-column label="显示类型" min-width="12%">
             <template slot-scope="scope">
-              <el-select id="htmlType" v-model="scope.row.htmlType">
+              <el-select name="htmlType" v-model="scope.row.htmlType">
                 <el-option label="文本框" value="input" />
                 <el-option label="文本域" value="textarea" />
                 <el-option label="下拉框" value="select" />
@@ -95,7 +95,7 @@
           </el-table-column>
           <el-table-column label="字典类型" min-width="12%">
             <template slot-scope="scope">
-              <el-select id="dictType" v-model="scope.row.dictType" clearable filterable placeholder="请选择">
+              <el-select name="dictType" v-model="scope.row.dictType" clearable filterable placeholder="请选择">
                 <el-option
                   v-for="dict in dictOptions"
                   :key="dict.typeCode"
