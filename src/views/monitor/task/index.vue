@@ -388,7 +388,7 @@ export default {
           this.msgSuccess(text + "成功");
           this.getList();
         }).catch(function() {
-          row.status = row.status === "NORMAL" ? "NORMAL" : "PAUSE";
+          row.status = row.status === "NORMAL" ? "PAUSE" : "NORMAL";
         });
     },
     /* 立即执行一次 */
