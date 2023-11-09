@@ -6,7 +6,7 @@ export function listTask(params) {
     pageIndex: params.pageIndex,
     pageSize: params.pageSize,
     order: {
-      key: "createTime",
+      key: "updateTime",
       val: "desc"
     },
     whereList: [

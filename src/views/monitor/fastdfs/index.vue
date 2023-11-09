@@ -54,7 +54,11 @@
           <el-tag type="danger">{{ scope.row.size }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="时间" align="center" prop="createTime" width="200" />
+      <el-table-column label="创建时间" align="center" prop="createTime" width="200">
+        <template slot-scope="scope">
+          <span>{{ parseTime(scope.row.createTime) }}</span>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center" width="200" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-view" @click="handlePreview(scope.row)">查看</el-button>

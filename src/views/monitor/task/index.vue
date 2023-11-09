@@ -94,9 +94,9 @@
           ></el-switch>
         </template>
       </el-table-column>
-      <el-table-column label="创建时间" align="center" prop="createTime" width="200">
+      <el-table-column label="修改时间" align="center" prop="updateTime" width="200">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.createTime) }}</span>
+          <span>{{ parseTime(scope.row.updateTime) }}</span>
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -207,21 +207,27 @@
     <el-dialog title="任务详细" :visible.sync="openView" width="700px" append-to-body>
       <el-form ref="form" :model="form" label-width="120px" size="mini">
         <el-row>
-          <el-col :span="12">
+          <el-col :span="24">
             <el-form-item label="任务编号：">{{ form.id }}</el-form-item>
+          </el-col>
+          <el-col :span="12">
             <el-form-item label="任务名称：">{{ form.taskName }}</el-form-item>
-          </el-col>
-          <el-col :span="12">
             <el-form-item label="任务分组：">{{ taskGroupFormat(form) }}</el-form-item>
-            <el-form-item label="创建时间：">{{ form.createTime }}</el-form-item>
           </el-col>
           <el-col :span="12">
+            <el-form-item label="创建时间：">{{ parseTime(form.createTime) }}</el-form-item>
             <el-form-item label="cron表达式：">{{ form.cronExpression }}</el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="下次执行时间：">{{ parseTime(form.nextValidTime) }}</el-form-item>
+            <el-form-item label="执行策略：">
+              <div v-if="form.misfirePolicy == 'DEFAULT'">默认策略</div>
+              <div v-else-if="form.misfirePolicy == 'IGNORE'">立即执行</div>
+              <div v-else-if="form.misfirePolicy == 'ONCE'">执行一次</div>
+              <div v-else-if="form.misfirePolicy == 'NONE'">放弃执行</div>
+            </el-form-item>
           </el-col>
-          <el-col :span="24">
+          <el-col :span="12">
             <el-form-item label="调用目标方法：">{{ form.invokeTarget }}</el-form-item>
           </el-col>
           <el-col :span="12">
@@ -237,12 +243,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="执行策略：">
-              <div v-if="form.misfirePolicy == 'DEFAULT'">默认策略</div>
-              <div v-else-if="form.misfirePolicy == 'IGNORE'">立即执行</div>
-              <div v-else-if="form.misfirePolicy == 'ONCE'">执行一次</div>
-              <div v-else-if="form.misfirePolicy == 'NONE'">放弃执行</div>
-            </el-form-item>
+            <el-form-item label="修改时间：">{{ parseTime(form.updateTime) }}</el-form-item>
           </el-col>
         </el-row>
       </el-form>
@@ -292,7 +293,7 @@ export default {
         taskGroup: undefined,
         status: undefined,
         order: {
-          key: 'createTime',
+          key: 'updateTime',
           val: 'desc' 
         }
       },
@@ -474,7 +475,7 @@ export default {
     handleExport() {
       var data = {
         order: {
-          key: "createTime",
+          key: "updateTime",
           val: "desc"
         },
         whereList: [

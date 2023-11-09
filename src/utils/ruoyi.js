@@ -15,7 +15,9 @@ export function parseTime(time, pattern) {
   if (typeof time === 'object') {
     date = time
   } else {
-    if ((typeof time === 'string') && (/^[0-9]+$/.test(time))) {
+    if ((typeof time === 'string') && (time.indexOf('T') !== '-1')) {
+      time = time.split('T')[0] + ' ' + time.split('T')[1];
+    } else if ((typeof time === 'string') && (/^[0-9]+$/.test(time))) {
       time = parseInt(time)
     } else if (typeof time === 'string') {
       time = time.replace(new RegExp(/-/gm), '/')

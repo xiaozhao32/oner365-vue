@@ -89,6 +89,16 @@
           ></el-switch>
         </template>
       </el-table-column>
+      <el-table-column label="创建时间" align="center" prop="createTime" width="200">
+        <template slot-scope="scope">
+          <span>{{ parseTime(scope.row.createTime) }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="修改时间" align="center" prop="updateTime" width="200">
+        <template slot-scope="scope">
+          <span>{{ parseTime(scope.row.updateTime) }}</span>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button

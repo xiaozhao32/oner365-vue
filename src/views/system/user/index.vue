@@ -116,7 +116,7 @@
           </el-table-column>
           <el-table-column label="登录时间" align="center" prop="lastTime" width="200">
             <template slot-scope="scope">
-              <span>{{ scope.row.lastTime }}</span>
+              <span>{{ parseTime(scope.row.lastTime) }}</span>
             </template>
           </el-table-column>
           <el-table-column
