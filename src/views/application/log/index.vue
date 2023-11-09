@@ -41,7 +41,11 @@
         </template>
       </el-table-column>
       <el-table-column label="日志内容" prop="message" />
-      <el-table-column label="创建时间" align="center" prop="createTime" width="220"/>
+      <el-table-column label="创建时间" align="center" prop="createTime" width="200">
+        <template slot-scope="scope">
+          <span>{{ parseTime(scope.row.createTime) }}</span>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" width="80" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
