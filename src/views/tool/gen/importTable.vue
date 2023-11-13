@@ -105,7 +105,7 @@ export default {
     /** 导入按钮操作 */
     handleImportTable() {
       importTable({ tables: this.tables.join(",") }).then(res => {
-        if (res === 1) {
+        if (res.code === 1) {
           this.msgSuccess("导入成功！");
           this.visible = false;
           this.$emit("ok");
