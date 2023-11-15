@@ -105,12 +105,14 @@ export default {
     /** 导入按钮操作 */
     handleImportTable() {
       importTable({ tables: this.tables.join(",") }).then(res => {
-        if (res.code === 1) {
-          this.msgSuccess("导入成功！");
+        if (res) {
           this.visible = false;
           this.$emit("ok");
         }
-      });
+      }).then(() => {
+          this.getList();
+          this.msgSuccess("导入成功");
+      }).catch(function() {});
     }
   }
 };
