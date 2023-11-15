@@ -114,6 +114,11 @@
               ></el-switch>
             </template>
           </el-table-column>
+          <el-table-column label="创建时间" align="center" prop="createTime" width="200">
+            <template slot-scope="scope">
+              <span>{{ parseTime(scope.row.createTime) }}</span>
+            </template>
+          </el-table-column>
           <el-table-column label="登录时间" align="center" prop="lastTime" width="200">
             <template slot-scope="scope">
               <span>{{ parseTime(scope.row.lastTime) }}</span>
