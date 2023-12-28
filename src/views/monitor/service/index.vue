@@ -229,10 +229,12 @@ export default {
 	      var formData = new FormData();
 	      formData.append('multipartFile', this.$refs.upload.uploadFiles[0].raw);
           uploadService(formData, this.host, this.serviceId).then(response => {
-            if (response != '') {
+            if (response.code === 1) {
               this.openUpload = false;
               this.msgSuccess("上传成功");
-            }
+            } else {
+			this.msgError(response.msg);
+			}
             this.visible = false;
             this.fileList = [];
           });
