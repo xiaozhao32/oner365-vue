@@ -33,6 +33,8 @@
                 <el-option label="Double" value="Double" />
                 <el-option label="BigDecimal" value="BigDecimal" />
                 <el-option label="Date" value="Date" />
+                <el-option label="LocalDate" value="LocalDate" />
+                <el-option label="LocalDateTime" value="LocalDateTime" />
               </el-select>
             </template>
           </el-table-column>
@@ -178,7 +180,7 @@ export default {
             treeParentCode: genTable.treeParentCode
           };
           updateGenTable(genTable).then(response => {
-            if (response === 1) {
+            if (response) {
               this.msgSuccess("更新成功！");
               this.close();
             } else {
