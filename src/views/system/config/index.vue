@@ -58,7 +58,17 @@
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="配置名称" align="center" prop="configName" />
       <el-table-column label="配置内容" align="center" prop="configValue" />
-      <el-table-column label="状态" align="center" prop="status" :formatter="statusFormat" />
+      <el-table-column label="状态" align="center">
+        <template slot-scope="scope">
+          <el-switch
+            name="status"
+            v-model="scope.row.status"
+            active-value="YES"
+            inactive-value="NO"
+            @change="handleStatusChange(scope.row)"
+          ></el-switch>
+        </template>
+      </el-table-column>
       <el-table-column label="创建时间" align="center" prop="createTime" width="200">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
@@ -250,7 +260,7 @@ export default {
     // 状态修改
     handleStatusChange(row) {
       let text = row.status === "YES" ? "启用" : "停用";
-      this.$confirm('确认要"' + text + '"吗?', "警告", {
+      this.$confirm('确认要 "' + text + '" "' + row.configName + '" 吗?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
