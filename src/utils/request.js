@@ -70,7 +70,8 @@ error => {
     })
   }
   // 服务器异常
-  if (error.response.status === 500 && error.response.data.message !== undefined) {
+  if ((error.response.status === 500 || error.response.status === 400)
+      && error.response.data.message !== undefined) {
     data = error.response.data.message
   }
   Message({
