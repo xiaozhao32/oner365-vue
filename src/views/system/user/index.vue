@@ -615,10 +615,10 @@ export default {
           }
           this.form.orgs = this.getOrgAllCheckedKeys();
           saveUser(this.form).then(response => {
-            if (response.code === 1) {
+            if (response != null) {
               this.msgSuccess("保存成功");
             } else {
-              this.msgError(response.msg);
+              this.msgError("保存失败");
             }
             this.open = false;
             this.getList();
@@ -675,7 +675,7 @@ export default {
     /** 下载模板操作 */
     importTemplate() {
       importTemplate().then(response => {
-        this.download(response.msg);
+        this.download(response);
       });
     },
     // 文件上传中处理
@@ -687,7 +687,7 @@ export default {
       this.upload.open = false;
       this.upload.isUploading = false;
       this.$refs.upload.clearFiles();
-      this.$alert(response.msg, "导入结果", { dangerouslyUseHTMLString: true });
+      this.$alert(response, "导入结果", { dangerouslyUseHTMLString: true });
       this.getList();
     },
     // 提交上传文件
