@@ -126,13 +126,13 @@ export default {
         var filename = this.user.id + ".png";
         formData.append("avatarfile", data, filename);
         uploadAvatar(formData).then(response => {
-          if (response.code === 1) {
+          if (response != null) {
             this.open = false;
-            this.options.img = response.msg;
+            this.options.img = response;
             store.commit('SET_AVATAR', this.options.img);
             this.msgSuccess("修改成功");
           } else {
-            this.msgError(response.msg);
+            this.msgError("修改失败");
           }
           this.visible = false;
         });

@@ -20,6 +20,7 @@ export function listUser(queryParams) {
     whereList: [
       { key: 'userName', opt: 'like', val: queryParams.userName },
       { key: 'realName', opt: 'like', val: queryParams.realName },
+      { key: 'phone', opt: 'like', val: queryParams.phone },
       { key: 'createTime', opt: 'be', val: beginTime + '|' + endTime }
     ]
   }

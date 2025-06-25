@@ -292,10 +292,10 @@ export default {
       this.$refs["form"].validate(valid => {
         if (valid) {
           saveOperation(this.form).then(response => {
-            if (response.code === 1) {
+            if (response != null) {
               this.msgSuccess("保存成功");
             } else {
-              this.msgError(response.msg);
+              this.msgError("保存失败");
             }
             this.open = false;
             this.getList();

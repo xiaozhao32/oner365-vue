@@ -437,21 +437,27 @@ export default {
         if (valid) {
           if (this.form.id != undefined) {
             updateTask(this.form).then(response => {
-              if (response.code === 1) {
+              if (response === "true") {
                 this.msgSuccess("修改成功");
-                this.open = false;
-                this.getList();
+              } else if (response === "false") {
+                this.msgError("修改失败");
+              } else {
+                this.msgError(response);
               }
             });
           } else {
             addTask(this.form).then(response => {
-              if (response.code === 1) {
-                this.msgSuccess("新增成功");
-                this.open = false;
-                this.getList();
+              if (response === "true") {
+                this.msgSuccess("添加成功");
+              } else if (response === "false") {
+                this.msgError("添加失败");
+              } else {
+                this.msgError(response);
               }
             });
           }
+          this.open = false;
+          this.getList();
         }
       });
     },

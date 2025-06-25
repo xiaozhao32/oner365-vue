@@ -82,7 +82,7 @@
       <el-table-column type="selection" width="50" align="center" prop="id" />
       <el-table-column label="请求IP" align="center" prop="operationIp" width="150"/>
       <el-table-column label="服务名称" align="center" prop="operationName" width="150" />
-      <el-table-column label="请求方法" align="center" prop="methodName" width="80">
+      <el-table-column label="请求方法" align="center" prop="methodName" width="100">
         <template slot-scope="scope">
           <el-tag :type="scope.row.methodName === 'POST' ? 'success' : 'danger'">
             {{ scope.row.methodName }}
@@ -286,10 +286,10 @@ export default {
       this.$refs["form"].validate(valid => {
         if (valid) {
           saveLog(this.form).then(response => {
-            if (response.code === 1) {
+            if (response != null) {
               this.msgSuccess("保存成功");
             } else {
-              this.msgError(response.msg);
+              this.msgError("保存失败");
             }
             this.open = false;
             this.getList();
