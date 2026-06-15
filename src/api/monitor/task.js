@@ -15,7 +15,7 @@ export function listTask(params) {
     ]
   }
   return request({
-    url: '/monitor/task/list',
+    url: '/monitor/task/page',
     method: 'post',
     data: data
   })

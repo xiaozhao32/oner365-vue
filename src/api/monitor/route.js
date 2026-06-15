@@ -11,7 +11,7 @@ export function listRoute(params) {
     ]
   }
   return request({
-    url: '/route/list',
+    url: '/route/page',
     method: 'post',
     data: data
   })

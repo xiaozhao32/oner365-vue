@@ -143,7 +143,7 @@
 </template>
 
 <script>
-import { listJob, getJob, delJob, saveJob, changeStatus } from "@/api/system/job";
+import { pageJob, getJob, delJob, saveJob, changeStatus } from "@/api/system/job";
 import { exportFile } from "@/utils/zipdownload";
 
 export default {
@@ -203,7 +203,7 @@ export default {
     /** 查询岗位列表 */
     getList() {
       this.loading = true;
-      listJob(this.queryParams).then(response => {
+      pageJob(this.queryParams).then(response => {
         this.jobList = response.content;
         this.total = response.totalElements;
         this.loading = false;

@@ -12,7 +12,7 @@ export function listType(queryParams) {
     ]
   }
   return request({
-    url: '/system/dict/type/list',
+    url: '/system/dict/type/page',
     method: 'post',
     data: data
   })

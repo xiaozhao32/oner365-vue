@@ -198,7 +198,7 @@
 </template>
 
 <script>
-import { listRole, getRole, delRole, saveRole, dataScope, changeRoleStatus, checkRoleName } from "@/api/system/role";
+import { pageRole, getRole, delRole, saveRole, dataScope, changeRoleStatus, checkRoleName } from "@/api/system/role";
 import { treeselect as menuTreeselect, roleMenuTreeselect, listMenuType } from "@/api/system/menu";
 import { treeselect as orgTreeselect, roleOrgTreeselect } from "@/api/system/org";
 import { exportFile } from "@/utils/zipdownload";
@@ -313,7 +313,7 @@ export default {
     /** 查询角色列表 */
     getList() {
       this.loading = true;
-      listRole(this.addDateRange(this.queryParams, this.dateRange)).then(
+      pageRole(this.addDateRange(this.queryParams, this.dateRange)).then(
         response => {
           this.roleList = response.content;
           this.total = response.totalElements;

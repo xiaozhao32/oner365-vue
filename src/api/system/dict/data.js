@@ -14,7 +14,7 @@ export function listData(queryParams) {
     ]
   }
   return request({
-    url: '/system/dict/item/list',
+    url: '/system/dict/item/page',
     method: 'post',
     data: data
   })

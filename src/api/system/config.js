@@ -12,7 +12,7 @@ export function listConfig(queryParams) {
     ]
   }
   return request({
-    url: '/system/config/list',
+    url: '/system/config/page',
     method: 'post',
     data: data
   })

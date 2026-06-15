@@ -18,7 +18,7 @@ let setWatermark = (str) => {
   cans.font = '20px Vedana'
   cans.fillStyle = 'rgba(300, 200, 200, 0.20)'
   cans.textAlign = 'left'
-  cans.textBaseline = 'Middle'
+  cans.textBaseline = 'middle'
   cans.fillText(str, can.width / 3, can.height / 2)
 
   let div = document.createElement('div')

@@ -25,7 +25,7 @@ export function listUser(queryParams) {
     ]
   }
   return request({
-    url: '/system/user/list',
+    url: '/system/user/page',
     method: 'post',
     data: data
   })

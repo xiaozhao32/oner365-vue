@@ -12,7 +12,7 @@ export function listMenuType(queryParams) {
     ]
   }
   return request({
-    url: '/system/menu/type/list',
+    url: '/system/menu/type/page',
     method: 'post',
     data: data
   })

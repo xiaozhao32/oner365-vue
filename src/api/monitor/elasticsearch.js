@@ -20,7 +20,7 @@ export function sampleGeneList(params) {
 	]
   }
   return request({
-	url: '/elasticsearch/sample/gene/list',
+	url: '/elasticsearch/sample/gene/page',
 	method: 'post',
 	data: data
   })

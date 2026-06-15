@@ -18,7 +18,7 @@ export function listTaskLog(params) {
     ]
   }
   return request({
-    url: '/monitor/taskLog/list',
+    url: '/monitor/taskLog/page',
     method: 'post',
     data: data
   })

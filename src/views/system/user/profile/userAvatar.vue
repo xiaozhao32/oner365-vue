@@ -73,7 +73,7 @@ export default {
       // 弹出层标题
       title: "修改头像",
       options: {
-        img: store.getters.avatar, //裁剪图片的地址
+        img: store.getters.avatar || require('@/assets/image/profile.jpg'), //裁剪图片的地址
         autoCrop: true, // 是否默认生成截图框
         autoCropWidth: 200, // 默认生成截图框宽度
         autoCropHeight: 200, // 默认生成截图框高度
@@ -81,6 +81,18 @@ export default {
       },
       previews: {}
     };
+  },
+  computed: {
+    // 响应式头像地址，store 更新后自动同步
+    avatarSrc() {
+      return store.getters.avatar || require('@/assets/image/profile.jpg');
+    }
+  },
+  watch: {
+    // 当 store 中头像变化时同步到 cropper options
+    avatarSrc(val) {
+      this.options.img = val;
+    }
   },
   methods: {
     // 编辑头像

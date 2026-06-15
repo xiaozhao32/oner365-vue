@@ -16,7 +16,7 @@ export function listLog(queryParams) {
     ]
   }
   return request({
-    url: '/system/log/list',
+    url: '/system/log/page',
     method: 'post',
     data: data
   })

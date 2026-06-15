@@ -15,7 +15,7 @@ export function listFile(params) {
     ]
   }
   return request({
-    url: '/files/storage/list',
+    url: '/files/storage/page',
     method: 'post',
     data: data
   }) 

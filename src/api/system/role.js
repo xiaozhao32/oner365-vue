@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 
 // 查询角色列表
-export function listRole(queryParams) {
+export function pageRole(queryParams) {
   var beginTime = '';
   var endTime = '';
   if (queryParams.beginTime != undefined && queryParams.beginTime != '' 
@@ -12,6 +12,32 @@ export function listRole(queryParams) {
   var data = {
     pageIndex: queryParams.pageIndex,
     pageSize: queryParams.pageSize,
+    order: {
+      key: 'createTime',
+      val: 'desc' 
+    },
+    whereList: [
+      { key: 'roleName', opt: 'like', val: queryParams.roleName },
+      { key: 'status', opt: 'enum', val: queryParams.status },
+      { key: 'createTime', opt: 'be', val: beginTime + '|' + endTime }
+    ]
+  }
+  return request({
+    url: '/system/role/page',
+    method: 'post',
+    data: data
+  })
+}
+
+export function listRole(queryParams) {
+  var beginTime = '';
+  var endTime = '';
+  if (queryParams.beginTime != undefined && queryParams.beginTime != '' 
+      && queryParams.endTime != undefined && queryParams.endTime != '') {
+    beginTime = queryParams.beginTime + ' 00:00:00';
+    endTime = queryParams.endTime + ' 23:59:59';
+  }
+  var data = {
     order: {
       key: 'createTime',
       val: 'desc' 

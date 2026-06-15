@@ -10,7 +10,7 @@ export function sampleLocationList(params) {
       ]
     }
     return request({
-      url: '/elasticsearch/sample/location/list',
+      url: '/elasticsearch/sample/location/page',
       method: 'post',
       data: data
     })

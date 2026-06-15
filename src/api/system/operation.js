@@ -12,7 +12,7 @@ export function listOperation(queryParams) {
     ]
   }
   return request({
-    url: '/system/menu/operation/list',
+    url: '/system/menu/operation/page',
     method: 'post',
     data: data
   })

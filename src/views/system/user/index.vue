@@ -177,7 +177,7 @@
         <el-row>
           <el-col :span="12">
             <el-form-item v-if="form.id == undefined" label="用户名称" prop="userName">
-              <el-input id="userName" v-model="form.userName" prefix-icon="el-icon-user-solid" placeholder="请输入用户名称" />
+              <el-input v-model="form.userName" prefix-icon="el-icon-user-solid" placeholder="请输入用户名称" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -189,7 +189,7 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="手机号码" prop="phone">
-              <el-input id="phone" v-model="form.phone" prefix-icon="el-icon-phone" placeholder="请输入手机号码" maxlength="11" />
+              <el-input v-model="form.phone" prefix-icon="el-icon-phone" placeholder="请输入手机号码" maxlength="11" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -325,6 +325,8 @@
 
 <script>
 import { listUser, getUser, delUser, saveUser, resetUserPwd, checkUserName, changeUserStatus, importTemplate} from "@/api/system/user";
+import { listJob } from "@/api/system/job"
+import { listRole } from "@/api/system/role"
 import { treeselect as orgTreeselect, userOrgTreeselect } from "@/api/system/org";
 import { getToken } from "@/utils/auth";
 import Treeselect from "@riophae/vue-treeselect";
@@ -569,6 +571,14 @@ export default {
       this.open = true;
       this.title = "添加用户";
       this.form.password = this.initPassword;
+      this.queryParams.status = "YES";
+      listJob(this.queryParams).then(response => {
+        this.jobOptions = response;
+      });
+      listRole(this.queryParams).then(response => {
+        this.roleOptions = response;
+      });
+
     },
     /** 修改按钮操作 */
     handleUpdate(row) {

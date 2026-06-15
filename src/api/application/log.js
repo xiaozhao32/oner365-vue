@@ -12,7 +12,7 @@ export function applicationLogList(params) {
 	  ]
   }
   return request({
-	url: '/elasticsearch/application/log/list',
+	url: '/elasticsearch/application/log/page',
 	method: 'post',
 	data: data
   })
