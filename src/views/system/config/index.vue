@@ -74,11 +74,6 @@
           <span>{{ parseTime(scope.row.createTime) }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="修改时间" align="center" prop="updateTime" width="200">
-        <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.updateTime) }}</span>
-        </template>
-      </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -188,7 +183,7 @@ export default {
         pageSize: 10,
         status: undefined,
         order: {
-          key: 'updateTime',
+          key: 'createTime',
           val: 'desc' 
         }
       },
@@ -326,7 +321,7 @@ export default {
     handleExport() {
       const queryParams = this.queryParams;
       var data = {
-        order: { key: 'updateTime', val: 'desc' },
+        order: { key: 'createTime', val: 'desc' },
         whereList: [
           // 查询参数 
           { key: 'status', opt: 'enum', val: queryParams.status }

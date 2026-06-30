@@ -5,7 +5,7 @@ export function listConfig(queryParams) {
   var data = {
     pageIndex: queryParams.pageIndex,
     pageSize: queryParams.pageSize,
-    order: { key: 'updateTime', val: 'desc' },
+    order: { key: 'createTime', val: 'desc' },
     whereList: [
       // 查询参数 
       { key: 'status', opt: 'enum', val: queryParams.status }

@@ -94,9 +94,9 @@
           ></el-switch>
         </template>
       </el-table-column>
-      <el-table-column label="修改时间" align="center" prop="updateTime" width="200">
+      <el-table-column label="创建时间" align="center" prop="createTime" width="200">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.updateTime) }}</span>
+          <span>{{ parseTime(scope.row.createTime) }}</span>
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -243,7 +243,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="修改时间：">{{ parseTime(form.updateTime) }}</el-form-item>
+            <el-form-item label="创建时间：">{{ parseTime(form.createTime) }}</el-form-item>
           </el-col>
         </el-row>
       </el-form>
@@ -293,7 +293,7 @@ export default {
         taskGroup: undefined,
         status: undefined,
         order: {
-          key: 'updateTime',
+          key: 'createTime',
           val: 'desc' 
         }
       },
@@ -481,7 +481,7 @@ export default {
     handleExport() {
       var data = {
         order: {
-          key: "updateTime",
+          key: "createTime",
           val: "desc"
         },
         whereList: [
