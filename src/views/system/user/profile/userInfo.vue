@@ -11,8 +11,11 @@
     </el-form-item>
     <el-form-item label="性别">
       <el-radio-group id="sex" v-model="user.sex">
-        <el-radio label="0">男</el-radio>
-        <el-radio label="1">女</el-radio>
+        <el-radio
+            v-for="dict in sexOptions"
+            :key="dict.itemCode"
+            :label="dict.itemCode"
+        >{{dict.itemName}}</el-radio>
       </el-radio-group>
     </el-form-item>
     <el-form-item>
@@ -33,6 +36,7 @@ export default {
   },
   data() {
     return {
+      sexOptions: [],
       // 表单校验
       rules: {
         realName: [
@@ -56,6 +60,11 @@ export default {
         ]
       }
     };
+  },
+  created() {
+    this.getDicts("sys_user_sex").then(response => {
+      this.sexOptions = response;
+    });
   },
   methods: {
     submit() {

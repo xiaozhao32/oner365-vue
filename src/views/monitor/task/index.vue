@@ -243,7 +243,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="创建时间：">{{ parseTime(form.createTime) }}</el-form-item>
+            <el-form-item label="更新时间：">{{ parseTime(form.updateTime) }}</el-form-item>
           </el-col>
         </el-row>
       </el-form>

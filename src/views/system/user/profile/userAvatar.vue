@@ -85,6 +85,7 @@ export default {
   computed: {
     // 响应式头像地址，store 更新后自动同步
     avatarSrc() {
+      this.options.img = process.env.VUE_APP_BASE_API + '/' + store.getters.avatar;
       return store.getters.avatar || require('@/assets/image/profile.jpg');
     }
   },
