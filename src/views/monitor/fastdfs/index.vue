@@ -156,7 +156,7 @@ export default {
         // 设置上传的请求头部
         headers: { Authorization: getToken() },
         // 上传的地址
-        url: process.env.VUE_APP_BASE_API + "/files/storage/upload"
+        url: process.env.VUE_APP_BASE_API + "/files/storage/upload?dictory=storage"
       },
     };
   },

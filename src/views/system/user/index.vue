@@ -95,7 +95,7 @@
           <el-table-column type="selection" width="50" align="center" prop="id" />
           <el-table-column label="头像" align="center" prop="avatar" width="60">
             <template slot-scope="scope" >
-              <el-avatar :src="scope.row.avatar" />
+              <el-avatar :src="formatAvatar(scope.row.avatar)" />
             </template>
           </el-table-column>
           <el-table-column label="用户名称" align="center" prop="userName" />
@@ -502,6 +502,19 @@ export default {
       let halfCheckedKeys = this.$refs.org.getCheckedKeys();
       checkedKeys.unshift.apply(checkedKeys, halfCheckedKeys);
       return checkedKeys;
+    },
+    formatAvatar(avatar) {
+      if (!avatar) return '';
+      // 如果是完整的 http 地址，直接返回
+      if (avatar.startsWith('http://') || avatar.startsWith('https://')) {
+        return avatar;
+      }
+      // 如果是 require 等内部资源（以 data: 或 / 开头或已经处理过的），直接返回
+      if (avatar.startsWith('data:') || avatar.startsWith('/') || avatar.startsWith('blob:')) {
+        return avatar;
+      }
+      // 拼接 API 基础路径 + 头像地址
+      return process.env.VUE_APP_BASE_API + '/' + avatar;
     },
     // 用户状态修改
     handleStatusChange(row) {

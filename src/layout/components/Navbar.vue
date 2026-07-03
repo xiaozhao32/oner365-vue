@@ -27,7 +27,7 @@
 
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar" class="user-avatar" alt="个人头像" />
+          <img :src="avatarUrl" class="user-avatar" alt="个人头像" />
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
@@ -74,6 +74,19 @@ export default {
       'avatar',
       'device'
     ]),
+    avatarUrl() {
+      if (!this.avatar) return '';
+      // 如果是完整的 http 地址，直接返回
+      if (this.avatar.startsWith('http://') || this.avatar.startsWith('https://')) {
+        return this.avatar;
+      }
+      // 如果是 require 等内部资源（以 data: 或 / 开头或已经处理过的），直接返回
+      if (this.avatar.startsWith('data:') || this.avatar.startsWith('/') || this.avatar.startsWith('blob:')) {
+        return this.avatar;
+      }
+      // 拼接 API 基础路径 + 头像地址
+      return process.env.VUE_APP_BASE_API + '/' + this.avatar;
+    },
     setting: {
       get() {
         return this.$store.state.settings.showSettings
