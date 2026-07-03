@@ -58,7 +58,8 @@
 <script>
 import { getCodeImg } from "@/api/login";
 import Cookies from "js-cookie";
-import { encrypt, decrypt } from '@/utils/jsencrypt'
+import { encrypt, decrypt } from '@/utils/jsencrypt';
+import { Message } from 'element-ui';
 
 export default {
   name: "Login",
@@ -131,10 +132,15 @@ export default {
           this.$store
             .dispatch("Login", this.loginForm)
             .then(() => {
-              this.$router.push({ path: this.redirect || "/" });
+              this.$router.push({ path: this.redirect || "/" }).catch(() => {});
             })
-            .catch(() => {
+            .catch(err => {
               this.loading = false;
+              Message({
+                message: "账号或密码错误，请重新输入！",
+                type: 'error',
+                duration: 5 * 1000
+              });
               this.getCode();
             });
         }

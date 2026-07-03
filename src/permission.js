@@ -29,14 +29,17 @@ router.beforeEach((to, _from, next) => {
           })
 
             .catch(err => {
-              store.dispatch('FedLogOut').then(() => {
-                Message.error(err)
-                next({ path: '/' })
-              })
+            store.dispatch('FedLogOut').then(() => {
+              Message.error(err)
+              next({ path: '/' })
             })
+          })
         })
+        next()
+      } 
+      else {
+        next()
       }
-      next()
     }
   } else {
     // 没有token
