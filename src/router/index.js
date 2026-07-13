@@ -107,6 +107,19 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/druid/index',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '',
+        component: (resolve) => require(['@/views/monitor/druid/index'], resolve),
+        name: 'Druid',
+        meta: { title: 'Druid监控' }
+      }
+    ]
+  },
+  {
     path: '/task/log',
     component: Layout,
     hidden: true,
