@@ -96,7 +96,7 @@
       </el-table-column>
       <el-table-column label="创建时间" align="center" prop="createTime" width="200">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.createTime) }}</span>
+          <span>{{ parseTime(scope.row.createTime, "{y}年{m}月{d}日 {h}:{i}:{s}") }}</span>
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">

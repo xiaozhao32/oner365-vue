@@ -12,6 +12,7 @@ export function parseTime(time, pattern) {
   }
   const format = pattern || '{y}-{m}-{d} {h}:{i}:{s}'
   let date
+  const type = typeof time
   if (typeof time === 'object') {
     date = time
   } else {
@@ -19,6 +20,10 @@ export function parseTime(time, pattern) {
       time = time.split('T')[0] + ' ' + time.split('T')[1];
     } else if ((typeof time === 'string') && (/^[0-9]+$/.test(time))) {
       time = parseInt(time)
+    } else if ((typeof time === 'string') && (time.indexOf('年') != '-1')) {
+      time = time.replace(new RegExp(/年/gm), '-')
+      time = time.replace(new RegExp(/月/gm), '-')
+      time = time.replace(new RegExp(/日/gm), '-')
     } else if (typeof time === 'string') {
       time = time.replace(new RegExp(/-/gm), '/')
     }
